@@ -10,10 +10,10 @@ using UnityEngine;
  * and pop themselves off.
  */
 namespace AI.FSM {
-public class FSM {
+public class StateMachine {
     private Stack<FSMState> stateStack = new Stack<FSMState>();
 
-    public delegate void FSMState (FSM fsm, GameObject gameObject);
+    public delegate void FSMState (StateMachine fsm, GameObject gameObject);
 
     public void Update (GameObject gameObject) {
         if (stateStack.Peek() != null) {

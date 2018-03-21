@@ -56,6 +56,44 @@ public class GoapPlanner {
         // build graph
         Node start = new Node (null, 0, worldState, null);
         bool success = BuildGraph(start, leaves, usableActions, goal);
+
+        if (!success) {
+            // oh no, we didn't get a plan
+            Debug.Log("NO PLAN");
+            return null;
+        }
+
+        // get the cheapest leaf
+        Node cheapest = null;
+        foreach (Node leaf in leaves) {
+            if (cheapest == null)
+                cheapest = leaf;
+            else {
+                if (leaf.runningCost < cheapest.runningCost)
+                    cheapest = leaf;
+            }
+        }
+
+        // get its node and work back through the parents
+        List<GoapAction> result = new List<GoapAction> ();
+        Node n = cheapest;
+        while (n != null) {
+            if (n.action != null) {
+                result.Insert(0, n.action); // insert the action in the front
+            }
+            n = n.parent;
+        }
+
+        // we now have this action list in correct order
+
+        Queue<GoapAction> queue = new Queue<GoapAction> ();
+        foreach (GoapAction a in result) {
+            queue.Enqueue(a);
+        }
+
+        // hooray we have a plan!
+        return queue;
+
     }
 
     /**
