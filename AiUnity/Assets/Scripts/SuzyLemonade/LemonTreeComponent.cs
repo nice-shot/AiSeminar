@@ -13,7 +13,7 @@ public class LemonTreeComponent : MonoBehaviour {
         }
     }
 
-    void Start() {
+    void Awake() {
         // Place lemon for each available position in tree
         foreach (Transform lemonPos in lemonSpawnPositions) {
             // TODO: Use object pooling instead of instantiating here

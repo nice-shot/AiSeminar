@@ -38,7 +38,7 @@ public class MakeLemonadeAction : GoapAction {
         float closestDist = 0;
 
         foreach (LemonadeStandComponent stand in stands) {
-            if (stand.lemonadeJars >= LemonadeStandComponent.MAX_LEMONADE_JARS) {
+            if (stand.numJars >= stand.maxJars) {
                 continue;
             }
 
@@ -74,11 +74,12 @@ public class MakeLemonadeAction : GoapAction {
         if (Time.time - startTime > workDuration) {
             // finished making lemonade
             madeLemonade = true;
-            targetStand.lemonadeJars++;
             Person agentPerson = agent.GetComponent<Person>();
-            GameObject lemon = agentPerson.DropItem();
             // When lemonade is created the lemon is destroyed
+            GameObject lemon = agentPerson.DropItem();
             Destroy(lemon);
+
+            targetStand.AddLemonade();
         }
         return true;
     }
