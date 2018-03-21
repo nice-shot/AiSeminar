@@ -1,31 +1,28 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 using AI.Goap;
-
 namespace SuzyLemonade {
-public class MakeLemonadeAction : GoapAction {
-    private bool madeLemonade = false;
-    private LemonadeStandComponent targetStand;
+public class PickupLemons : GoapAction {
+    private bool gotLemons = false;
+    private LemonTreeComponent targetTree;
 
     private float startTime = 0f;
     public float workDuration = 2f;
     // Seconds
 
     void Awake() {
-        AddEffect("makeLemonade", true);
-        AddEffect("hasLemons", false);
-        AddPrecondition("hasLemons", true);
+        AddEffect("hasLemons", true);
     }
 
     public override void Reset() {
-        madeLemonade = false;
-        targetStand = null;
+        gotLemons = false;
+        targetTree = null;
         startTime = 0;
     }
 
     public override bool IsDone() {
-        return madeLemonade;
+        return gotLemons;
     }
 
     public override bool RequiresInRange() {
@@ -33,25 +30,24 @@ public class MakeLemonadeAction : GoapAction {
     }
 
     public override bool CheckProceduralPrecondition(GameObject agent) {
-        LemonadeStandComponent[] stands = (LemonadeStandComponent[])GameObject.FindObjectsOfType(typeof(LemonadeStandComponent));
-        LemonadeStandComponent closest = null;
+        LemonTreeComponent[] trees = (LemonTreeComponent[])GameObject.FindObjectsOfType(typeof(LemonTreeComponent));
+        LemonTreeComponent closest = null;
         float closestDist = 0;
 
-        foreach (LemonadeStandComponent stand in stands) {
-            if (stand.lemonadeJars >= LemonadeStandComponent.MAX_LEMONADE_JARS) {
+        foreach (LemonTreeComponent tree in trees) {
+            if (tree.lemons <= 0) {
                 continue;
             }
-
             if (closest == null) {
                 // first one so choose it for now
-                closest = stand;
-                closestDist = (stand.transform.position - agent.transform.position).sqrMagnitude;
+                closest = tree;
+                closestDist = (tree.transform.position - agent.transform.position).sqrMagnitude;
             } else {
                 // is this one closer than the last?
-                float dist = (stand.transform.position - agent.transform.position).sqrMagnitude;
+                float dist = (tree.transform.position - agent.transform.position).sqrMagnitude;
                 if (dist < closestDist) {
                     // found a closer one
-                    closest = stand;
+                    closest = tree;
                     closestDist = dist;
                 }
             }
@@ -60,8 +56,8 @@ public class MakeLemonadeAction : GoapAction {
             return false;
         }
 
-        targetStand = closest;
-        target = targetStand.gameObject;
+        targetTree = closest;
+        target = targetTree.gameObject;
 
         return closest != null;
     }
@@ -73,7 +69,7 @@ public class MakeLemonadeAction : GoapAction {
 
         if (Time.time - startTime > workDuration) {
             // finished making lemonade
-            madeLemonade = true;
+            gotLemons = true;
         }
         return true;
     }
