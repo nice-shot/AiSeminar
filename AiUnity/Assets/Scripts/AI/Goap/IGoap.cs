@@ -46,7 +46,7 @@ public interface IGoap {
      * One of the actions caused the plan to abort.
      * That action is returned.
      */
-    void planAborted(GoapAction aborter);
+    void PlanAborted(GoapAction aborter);
 
     /**
      * Called during Update. Move the agent towards the target in order

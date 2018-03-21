@@ -140,7 +140,7 @@ public sealed class GoapAgent : MonoBehaviour {
                         // action failed, we need to plan again
                         fsm.PopState();
                         fsm.PushState(idleState);
-                        dataProvider.planAborted(action);
+                        dataProvider.PlanAborted(action);
                     }
                 } else {
                     // we need to move there first
