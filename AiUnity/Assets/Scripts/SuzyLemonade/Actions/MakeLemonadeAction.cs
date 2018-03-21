@@ -75,6 +75,10 @@ public class MakeLemonadeAction : GoapAction {
             // finished making lemonade
             madeLemonade = true;
             targetStand.lemonadeJars++;
+            Person agentPerson = agent.GetComponent<Person>();
+            GameObject lemon = agentPerson.DropItem();
+            // When lemonade is created the lemon is destroyed
+            Destroy(lemon);
         }
         return true;
     }

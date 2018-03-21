@@ -70,7 +70,9 @@ public class PickupLemons : GoapAction {
         if (Time.time - startTime > workDuration) {
             // finished making lemonade
             gotLemons = true;
-            targetTree.lemons--;
+            GameObject lemon = targetTree.PickLemon();
+            Person agentPerson = agent.GetComponent<Person>();
+            agentPerson.HoldItem(lemon);
         }
         return true;
     }
