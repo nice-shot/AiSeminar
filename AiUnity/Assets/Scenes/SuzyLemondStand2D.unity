@@ -136,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 342205949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.29, y: 1.15, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 347094525}
@@ -194,6 +194,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 347094525}
+  - component: {fileID: 347094526}
   m_Layer: 0
   m_Name: LemonadeStand
   m_TagString: Untagged
@@ -208,13 +209,25 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 347094524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.34, y: -2.11, z: 0}
+  m_LocalPosition: {x: -3.38, y: -1.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 342205950}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &347094526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 347094524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8f61203bad1114a82b042c30a2f214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lemonadeJars: 0
 --- !u!1 &418042794
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +432,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1220237350}
+  - component: {fileID: 1220237354}
+  - component: {fileID: 1220237353}
+  - component: {fileID: 1220237352}
+  - component: {fileID: 1220237351}
   m_Layer: 0
   m_Name: Suzy
   m_TagString: Untagged
@@ -440,6 +457,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1220237351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220237349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d9f030355ab4d88c454feddcd9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 2
+--- !u!114 &1220237352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220237349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78f5510eefdb7c47b4de783bc976b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 2
+--- !u!114 &1220237353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220237349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff8c6528bba4804a8c50cfc22c4991c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+--- !u!114 &1220237354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1220237349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe4d721d11dfcb4ebcb006fa6456417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1350501278
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,11 +590,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4789582465065000, guid: d94d64de7c29c5e4cb30502515ae80cc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.36
+      value: -4.11
       objectReference: {fileID: 0}
     - target: {fileID: 4789582465065000, guid: d94d64de7c29c5e4cb30502515ae80cc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.88
+      value: -1.31
       objectReference: {fileID: 0}
     - target: {fileID: 4789582465065000, guid: d94d64de7c29c5e4cb30502515ae80cc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -563,6 +631,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1949146659}
+  - component: {fileID: 1949146660}
   m_Layer: 0
   m_Name: LemonTree
   m_TagString: Untagged
@@ -584,3 +653,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949146660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1949146658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168a02cc0a859b649b870bd0267820c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lemons: 5

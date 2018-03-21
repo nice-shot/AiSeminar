@@ -70,6 +70,7 @@ public class PickupLemons : GoapAction {
         if (Time.time - startTime > workDuration) {
             // finished making lemonade
             gotLemons = true;
+            targetTree.lemons--;
         }
         return true;
     }

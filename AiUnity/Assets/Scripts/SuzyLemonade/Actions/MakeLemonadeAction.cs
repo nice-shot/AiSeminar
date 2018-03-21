@@ -74,6 +74,7 @@ public class MakeLemonadeAction : GoapAction {
         if (Time.time - startTime > workDuration) {
             // finished making lemonade
             madeLemonade = true;
+            targetStand.lemonadeJars++;
         }
         return true;
     }
