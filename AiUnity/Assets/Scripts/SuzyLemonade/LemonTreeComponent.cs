@@ -15,8 +15,9 @@ public class LemonTreeComponent : MonoBehaviour {
     void Awake() {
         // Place lemon for each available position in tree
         foreach (GameObject lemon in lemonsArray) {
-            // TODO: Use object pooling instead of instantiating here
-            lemonQueue.Enqueue(lemon);
+            if (lemon.activeSelf) {
+                lemonQueue.Enqueue(lemon);
+            }
         }
     }
 

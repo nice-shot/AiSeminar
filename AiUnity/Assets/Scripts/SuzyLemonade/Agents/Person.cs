@@ -7,9 +7,15 @@ using AI.Goap;
 
 namespace SuzyLemonade {
 public abstract class Person : MonoBehaviour, IGoap {
-    public float moveSpeed = 1;
     public GameObject heldItem;
     public NavMeshAgent navAgent;
+    public GameObject itemHolder;
+
+    void Awake() {
+        if (!itemHolder) {
+            itemHolder = this.gameObject;
+        }
+    }
 
     public HashSet<KeyValuePair<string, object>> GetWorldState() {
         HashSet<KeyValuePair<string, object>> worldData = new HashSet<KeyValuePair<string, object>>();
@@ -65,7 +71,8 @@ public abstract class Person : MonoBehaviour, IGoap {
         if (heldItem != null) {
             DropItem();
         }
-        item.transform.parent = this.transform;
+
+        item.transform.parent = itemHolder.transform;
         item.transform.localPosition = Vector3.zero;
         heldItem = item;
     }
