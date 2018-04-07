@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 using AI.Goap;
 
@@ -8,11 +9,12 @@ namespace SuzyLemonade {
 public abstract class Person : MonoBehaviour, IGoap {
     public float moveSpeed = 1;
     public GameObject heldItem;
+    public NavMeshAgent navAgent;
 
     public HashSet<KeyValuePair<string, object>> GetWorldState() {
         HashSet<KeyValuePair<string, object>> worldData = new HashSet<KeyValuePair<string, object>>();
 
-        // implement world data
+            // implement world data
         return worldData;
     }
 
@@ -43,13 +45,17 @@ public abstract class Person : MonoBehaviour, IGoap {
 
     public bool MoveAgent(GoapAction nextAction) {
         // move towards the NextAction's target
-        float step = moveSpeed * Time.deltaTime;
-        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, nextAction.target.transform.position, step);
+//        float step = moveSpeed * Time.deltaTime;
+//        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, nextAction.target.transform.position, step);
+        navAgent.SetDestination(nextAction.target.transform.position);
 
-        if (gameObject.transform.position.Equals(nextAction.target.transform.position)) {
-            // we are at the target location, we are done
-            nextAction.SetInRange(true);
-            return true;
+        if (!navAgent.pathPending) {
+            if (navAgent.remainingDistance <= navAgent.stoppingDistance) {
+                if (!navAgent.hasPath || navAgent.velocity.sqrMagnitude == 0f) {
+                    nextAction.SetInRange(true);
+                    return true;
+                }
+            }
         }
 
         return false;

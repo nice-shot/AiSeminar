@@ -4,14 +4,15 @@ using System.Collections;
 public class LemonadeStandComponent : MonoBehaviour {
     public int numJars = 0;
     public int maxJars;
-    public Transform[] lemonadeJarPositions;
-    public GameObject jarPrefab;
-
+    public GameObject[] jarsArray;
 
     public void Awake() {
         // Assumes we're starting empty
         numJars = 0;
-        maxJars = lemonadeJarPositions.Length;
+        maxJars = jarsArray.Length;
+        foreach (GameObject jar in jarsArray) {
+            jar.SetActive(false);
+        }
     }
 
     public void AddLemonade() {
@@ -20,8 +21,8 @@ public class LemonadeStandComponent : MonoBehaviour {
             return;
         }
 
-        Transform jarPosition = lemonadeJarPositions[numJars];
-        Instantiate(jarPrefab, jarPosition.position, jarPosition.rotation, this.transform);
+        GameObject jar = jarsArray[numJars];
+        jar.SetActive(true);
         numJars++;
     }
 }

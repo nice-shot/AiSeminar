@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class LemonTreeComponent : MonoBehaviour {
-    public Transform[] lemonSpawnPositions;
-    public GameObject lemonPrefab;
+    public GameObject[] lemonsArray;
     private Queue<GameObject> lemonQueue = new Queue<GameObject> (); 
 
     public int lemons {
@@ -15,9 +14,8 @@ public class LemonTreeComponent : MonoBehaviour {
 
     void Awake() {
         // Place lemon for each available position in tree
-        foreach (Transform lemonPos in lemonSpawnPositions) {
+        foreach (GameObject lemon in lemonsArray) {
             // TODO: Use object pooling instead of instantiating here
-            GameObject lemon = Instantiate(lemonPrefab, lemonPos.position, lemonPos.rotation, this.transform);
             lemonQueue.Enqueue(lemon);
         }
     }
