@@ -6,12 +6,56 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Camera
+    100004: Floor
+    100006: Lemon
+    100008: LemonadeJug
+    100010: Stand
+    100012: Sun
+    100014: Suzy
+    100016: Tree
     400000: //RootNode
+    400002: Camera
+    400004: Floor
+    400006: Lemon
+    400008: LemonadeJug
+    400010: Stand
+    400012: Sun
+    400014: Suzy
+    400016: Tree
+    2000000: Camera
     2100000: Glass
     2100002: Lemonade
+    2100004: unnamed
+    2100006: Body
+    2100008: Hair
+    2100010: Dress
+    2100012: Wood
+    2100014: Sign__LemonadeStandSign
+    2100016: Trunk
+    2100018: Leaves
+    2100020: Lemon
     2300000: //RootNode
+    2300002: Floor
+    2300004: Lemon
+    2300006: LemonadeJug
+    2300008: Stand
+    2300010: Suzy
+    2300012: Tree
     3300000: //RootNode
+    3300002: Floor
+    3300004: Lemon
+    3300006: LemonadeJug
+    3300008: Stand
+    3300010: Suzy
+    3300012: Tree
     4300000: LemonadeJug
+    4300002: Floor
+    4300004: Suzy
+    4300006: Stand
+    4300008: Tree
+    4300010: Lemon
+    10800000: Sun
   externalObjects: {}
   materials:
     importMaterials: 1

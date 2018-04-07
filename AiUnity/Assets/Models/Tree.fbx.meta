@@ -1,57 +1,55 @@
 fileFormatVersion: 2
-guid: 91bf2b76396db42919950a3d38a29c42
-timeCreated: 1523118807
+guid: 30f1291dd31c643909a618b62c75a699
+timeCreated: 1523126358
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Camera
-    100004: Floor
-    100006: Lemon
-    100008: LemonadeJug
-    100010: Stand
-    100012: Sun
-    100014: Suzy
+    100000: Camera
+    100002: Floor
+    100004: Lemon
+    100006: LemonadeJug
+    100008: Stand
+    100010: Sun
+    100012: Suzy
+    100014: //RootNode
     100016: Tree
-    400000: //RootNode
-    400002: Camera
-    400004: Floor
-    400006: Lemon
-    400008: LemonadeJug
-    400010: Stand
-    400012: Sun
-    400014: Suzy
-    400016: Tree
+    400000: Camera
+    400002: Floor
+    400004: Lemon
+    400006: LemonadeJug
+    400008: Stand
+    400010: Sun
+    400012: Suzy
+    400014: Tree
+    400016: //RootNode
     2000000: Camera
-    2100000: Body
-    2100002: Hair
-    2100004: Dress
-    2100006: Glass
-    2100008: Lemonade
-    2100010: unnamed
+    2100000: Glass
+    2100002: Lemonade
+    2100004: unnamed
+    2100006: Body
+    2100008: Hair
+    2100010: Dress
     2100012: Wood
     2100014: Sign__LemonadeStandSign
     2100016: Trunk
     2100018: Leaves
     2100020: Lemon
-    2300000: //RootNode
-    2300002: Floor
-    2300004: Lemon
-    2300006: LemonadeJug
-    2300008: Stand
-    2300010: Suzy
-    2300012: Tree
-    3300000: //RootNode
-    3300002: Floor
-    3300004: Lemon
-    3300006: LemonadeJug
-    3300008: Stand
-    3300010: Suzy
-    3300012: Tree
-    4300000: Suzy
-    4300002: LemonadeJug
-    4300004: Floor
+    2300000: Floor
+    2300002: Lemon
+    2300004: LemonadeJug
+    2300006: Stand
+    2300008: Suzy
+    2300010: Tree
+    3300000: Floor
+    3300002: Lemon
+    3300004: LemonadeJug
+    3300006: Stand
+    3300008: Suzy
+    3300010: Tree
+    4300000: LemonadeJug
+    4300002: Floor
+    4300004: Suzy
     4300006: Stand
     4300008: Tree
     4300010: Lemon
@@ -105,7 +103,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
