@@ -11,9 +11,9 @@ FBXHeaderExtension:  {
 		Year: 2018
 		Month: 04
 		Day: 07
-		Hour: 19
-		Minute: 26
-		Second: 27
+		Hour: 21
+		Minute: 56
+		Second: 24
 		Millisecond: 0
 	}
 	Creator: "FBX SDK/FBX Plugins build 20070228"
@@ -21,7 +21,7 @@ FBXHeaderExtension:  {
 		FlagPLE: 0
 	}
 }
-CreationTime: "2018-04-07 19:26:27:000"
+CreationTime: "2018-04-07 21:56:24:000"
 Creator: "Blender version 2.79 (sub 0)"
 
 ; Object definitions
@@ -1471,18 +1471,18 @@ Objects:  {
 			Property: "Reflectivity", "double", "",0
 		}
 	}
-	Material: "Material::Wood", "" {
+	Material: "Material::Trunk", "" {
 		Version: 102
 		ShadingModel: "lambert"
 		MultiLayer: 0
 		Properties60:  {
 			Property: "ShadingModel", "KString", "", "Lambert"
 			Property: "MultiLayer", "bool", "",0
-			Property: "EmissiveColor", "ColorRGB", "",0.8000,0.8000,0.8000
+			Property: "EmissiveColor", "ColorRGB", "",0.7105,0.3360,0.0900
 			Property: "EmissiveFactor", "double", "",0.0000
 			Property: "AmbientColor", "ColorRGB", "",1.0000,1.0000,1.0000
 			Property: "AmbientFactor", "double", "",1.0000
-			Property: "DiffuseColor", "ColorRGB", "",0.8000,0.8000,0.8000
+			Property: "DiffuseColor", "ColorRGB", "",0.7105,0.3360,0.0900
 			Property: "DiffuseFactor", "double", "",0.8000
 			Property: "Bump", "Vector3D", "",0,0,0
 			Property: "TransparentColor", "ColorRGB", "",1,1,1
@@ -1494,7 +1494,7 @@ Objects:  {
 			Property: "ReflectionFactor", "double", "",1
 			Property: "Emissive", "ColorRGB", "",0,0,0
 			Property: "Ambient", "ColorRGB", "",1.0,1.0,1.0
-			Property: "Diffuse", "ColorRGB", "",0.8,0.8,0.8
+			Property: "Diffuse", "ColorRGB", "",0.7,0.3,0.1
 			Property: "Specular", "ColorRGB", "",1.0,1.0,1.0
 			Property: "Shininess", "double", "",12.3
 			Property: "Opacity", "double", "",1.0
@@ -1600,7 +1600,7 @@ Relations:  {
 	}
 	Material: "Material::Sign__LemonadeStandSign", "" {
 	}
-	Material: "Material::Wood", "" {
+	Material: "Material::Trunk", "" {
 	}
 	Texture: "Texture::LemonadeStandSign", "TextureVideoClip" {
 	}
@@ -1614,7 +1614,7 @@ Relations:  {
 Connections:  {
 	Connect: "OO", "Model::Stand", "Model::Scene"
 	Connect: "OO", "Material::Sign__LemonadeStandSign", "Model::Stand"
-	Connect: "OO", "Material::Wood", "Model::Stand"
+	Connect: "OO", "Material::Trunk", "Model::Stand"
 	Connect: "OO", "Texture::LemonadeStandSign", "Model::Stand"
 	Connect: "OO", "Video::LemonadeStandSign", "Texture::LemonadeStandSign"
 }

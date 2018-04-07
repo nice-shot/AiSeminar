@@ -41,12 +41,14 @@ ModelImporter:
     2300006: Stand
     2300008: Suzy
     2300010: Tree
+    2300012: //RootNode
     3300000: Floor
     3300002: Lemon
     3300004: LemonadeJug
     3300006: Stand
     3300008: Suzy
     3300010: Tree
+    3300012: //RootNode
     4300000: LemonadeJug
     4300002: Floor
     4300004: Suzy
@@ -103,7 +105,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
