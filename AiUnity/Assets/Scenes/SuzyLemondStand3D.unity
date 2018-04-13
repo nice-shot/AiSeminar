@@ -653,6 +653,56 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 1d47062b7f2a74c61a6abb892d433c29, type: 3}
   m_PrefabInternal: {fileID: 1627661258}
+--- !u!1001 &698725038
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7052742
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.05087608
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.050876092
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7052741
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -8.252001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 4790e9fea8472a5469f4228e5bfea09f, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &709774845 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 3ddb02335ec774ea5a03ee5857c66ec8, type: 3}
