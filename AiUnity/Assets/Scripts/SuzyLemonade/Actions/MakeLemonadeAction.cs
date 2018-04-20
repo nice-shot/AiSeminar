@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
+using System.Collections;
 
 using AI.Goap;
 
 namespace SuzyLemonade {
-public class MakeLemonadeAction : GoapAction {
-    private bool madeLemonade = false;
+public class MakeLemonadeAction : SmartAction {
     private LemonadeStandComponent targetStand;
-
-    private float startTime = 0f;
-    public float workDuration = 2f;
-    // Seconds
 
     void Awake() {
         AddEffect("makeLemonade", true);
@@ -18,69 +14,43 @@ public class MakeLemonadeAction : GoapAction {
         AddPrecondition("hasLemons", true);
     }
 
-    public override void Reset() {
-        madeLemonade = false;
+    protected override void SmartReset() {
         targetStand = null;
-        startTime = 0;
-    }
-
-    public override bool IsDone() {
-        return madeLemonade;
     }
 
     public override bool RequiresInRange() {
         return true;
     }
 
+    private static bool FilterLemonadeStand(GameObject stand) {
+        LemonadeStandComponent lemonadeStand = stand.GetComponent<LemonadeStandComponent> ();
+        return lemonadeStand.numJars < lemonadeStand.maxJars; 
+    }
+
     public override bool CheckProceduralPrecondition(GameObject agent) {
-        LemonadeStandComponent[] stands = (LemonadeStandComponent[])GameObject.FindObjectsOfType(typeof(LemonadeStandComponent));
-        LemonadeStandComponent closest = null;
-        float closestDist = 0;
+        GameObject[] stands = FindGameObjectsOfType<LemonadeStandComponent> ();
 
-        foreach (LemonadeStandComponent stand in stands) {
-            if (stand.numJars >= stand.maxJars) {
-                continue;
-            }
+        stands = Array.FindAll<GameObject> (stands, FilterLemonadeStand);
+        target = FindClosest (agent, stands);
 
-            if (closest == null) {
-                // first one so choose it for now
-                closest = stand;
-                closestDist = (stand.transform.position - agent.transform.position).sqrMagnitude;
-            } else {
-                // is this one closer than the last?
-                float dist = (stand.transform.position - agent.transform.position).sqrMagnitude;
-                if (dist < closestDist) {
-                    // found a closer one
-                    closest = stand;
-                    closestDist = dist;
-                }
-            }
-        }
-        if (closest == null) {
+        if (target == null) {
             return false;
         }
 
-        targetStand = closest;
-        target = targetStand.gameObject;
-
-        return closest != null;
+        targetStand = target.GetComponent<LemonadeStandComponent> ();
+        return targetStand != null;
     }
 
-    public override bool Perform(GameObject agent) {
-        if (startTime == 0) {
-            startTime = Time.time;
-        }
+    protected override bool SmartPerform(GameObject agent) {
+        // finished making lemonade
+        isDone = true;
+        Person agentPerson = agent.GetComponent<Person>();
+        // When lemonade is created the lemon is destroyed
+        GameObject lemon = agentPerson.DropItem();
+        Destroy(lemon);
 
-        if (Time.time - startTime > workDuration) {
-            // finished making lemonade
-            madeLemonade = true;
-            Person agentPerson = agent.GetComponent<Person>();
-            // When lemonade is created the lemon is destroyed
-            GameObject lemon = agentPerson.DropItem();
-            Destroy(lemon);
+        targetStand.AddLemonade();
 
-            targetStand.AddLemonade();
-        }
         return true;
     }
 }
