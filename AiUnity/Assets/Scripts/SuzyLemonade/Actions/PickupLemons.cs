@@ -1,28 +1,18 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 using AI.Goap;
 namespace SuzyLemonade {
-public class PickupLemons : GoapAction {
-    private bool gotLemons = false;
+public class PickupLemons : SmartAction {
     private LemonTreeComponent targetTree;
-
-    private float startTime = 0f;
-    public float workDuration = 2f;
-    // Seconds
 
     void Awake() {
         AddEffect("hasLemons", true);
     }
 
-    public override void Reset() {
-        gotLemons = false;
+    protected override void SmartReset() {
         targetTree = null;
-        startTime = 0;
-    }
-
-    public override bool IsDone() {
-        return gotLemons;
     }
 
     public override bool RequiresInRange() {
@@ -30,50 +20,28 @@ public class PickupLemons : GoapAction {
     }
 
     public override bool CheckProceduralPrecondition(GameObject agent) {
-        LemonTreeComponent[] trees = (LemonTreeComponent[])GameObject.FindObjectsOfType(typeof(LemonTreeComponent));
-        LemonTreeComponent closest = null;
-        float closestDist = 0;
+        LemonTreeComponent[] trees = GameObject.FindObjectsOfType(typeof(LemonTreeComponent)) as LemonTreeComponent[];
+        GameObject[] treeGameObjects = Array.ConvertAll<LemonTreeComponent, GameObject> (trees, t => t.gameObject);
 
-        foreach (LemonTreeComponent tree in trees) {
-            if (tree.lemons <= 0) {
-                continue;
-            }
-            if (closest == null) {
-                // first one so choose it for now
-                closest = tree;
-                closestDist = (tree.transform.position - agent.transform.position).sqrMagnitude;
-            } else {
-                // is this one closer than the last?
-                float dist = (tree.transform.position - agent.transform.position).sqrMagnitude;
-                if (dist < closestDist) {
-                    // found a closer one
-                    closest = tree;
-                    closestDist = dist;
-                }
-            }
-        }
-        if (closest == null) {
+        treeGameObjects = Array.FindAll<GameObject> (treeGameObjects, t => t.GetComponent<LemonTreeComponent>().lemons > 0);
+        target = FindClosest (agent, treeGameObjects);
+
+        if (target == null) {
             return false;
         }
 
-        targetTree = closest;
-        target = targetTree.gameObject;
+        targetTree = target.GetComponent<LemonTreeComponent> ();
 
-        return closest != null;
+        return targetTree != null;
     }
 
-    public override bool Perform(GameObject agent) {
-        if (startTime == 0) {
-            startTime = Time.time;
-        }
+    protected override bool SmartPerform(GameObject agent) {
+        // finished making lemonade
+        isDone = true;
+        GameObject lemon = targetTree.PickLemon();
+        Person agentPerson = agent.GetComponent<Person>();
+        agentPerson.HoldItem(lemon);
 
-        if (Time.time - startTime > workDuration) {
-            // finished making lemonade
-            gotLemons = true;
-            GameObject lemon = targetTree.PickLemon();
-            Person agentPerson = agent.GetComponent<Person>();
-            agentPerson.HoldItem(lemon);
-        }
         return true;
     }
 }
