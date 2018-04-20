@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 using AI.Goap;
@@ -56,6 +57,11 @@ public abstract class SmartAction : GoapAction {
         }
 
         return closest;
+    }
+
+    public static GameObject[] FindGameObjectsOfType<T>() {
+        MonoBehaviour[] objects = GameObject.FindObjectsOfType (typeof(T)) as MonoBehaviour[];
+        return Array.ConvertAll<MonoBehaviour, GameObject> (objects, o => o.gameObject);
     }
 
     // Reset after things related to smart reset are complete

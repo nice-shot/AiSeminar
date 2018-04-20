@@ -20,8 +20,7 @@ public class PickupLemons : SmartAction {
     }
 
     public override bool CheckProceduralPrecondition(GameObject agent) {
-        LemonTreeComponent[] trees = GameObject.FindObjectsOfType(typeof(LemonTreeComponent)) as LemonTreeComponent[];
-        GameObject[] treeGameObjects = Array.ConvertAll<LemonTreeComponent, GameObject> (trees, t => t.gameObject);
+        GameObject[] treeGameObjects = FindGameObjectsOfType<LemonTreeComponent>();
 
         treeGameObjects = Array.FindAll<GameObject> (treeGameObjects, t => t.GetComponent<LemonTreeComponent>().lemons > 0);
         target = FindClosest (agent, treeGameObjects);
