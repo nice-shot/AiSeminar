@@ -18,6 +18,7 @@ public class BuyLemonadeAction : SmartAction {
     }
 
     protected override bool SmartPerform (GameObject agent) {
+        isDone = true;
         return true;
     }
 

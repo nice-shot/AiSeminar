@@ -3,6 +3,10 @@ using System.Collections;
 
 namespace SuzyLemonade {
 public class StandInLineAction : SmartAction {
+    public bool isWaitingInLine;
+    public float maxLineWaitTime;
+    private float waitInLineStart = 0;
+
     private LemonadeStandComponent targetStand;
 
     void Awake() {
@@ -12,15 +16,28 @@ public class StandInLineAction : SmartAction {
 
     protected override void SmartReset () {
         targetStand = null;
+        isWaitingInLine = false;
+        waitInLineStart = 0;
     }
 
     protected override bool SmartPerform (GameObject agent) {
-        // Stand in line and wait for suzy to start selling + wait to be first in line
-        if (targetStand.GetSelling ()) {
+        if (waitInLineStart == 0) {
+            targetStand.AddToLine (this);
+            waitInLineStart = Time.time;
+            isWaitingInLine = true;
+        }
+
+        // Max wait time before giving up
+        if (Time.time - waitInLineStart > maxLineWaitTime) {
+            // This should make him stop the action
+            return false;
+        }
+
+        // Stand in line and wait to be first in line
+        if (isWaitingInLine == false) {
             isDone = true;
         }
         return true;
-        // Allow max wait time before giving up
     }
 
     public override bool RequiresInRange () {

@@ -9,7 +9,7 @@ public class MakeLemonadeAction : SmartAction {
     private LemonadeStandComponent targetStand;
 
     void Awake() {
-        AddEffect("makeLemonade", true);
+        AddEffect("hasLemonade", true);
         AddEffect("hasLemons", false);
         AddPrecondition("hasLemons", true);
     }

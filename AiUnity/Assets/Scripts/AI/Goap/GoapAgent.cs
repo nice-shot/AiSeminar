@@ -64,6 +64,7 @@ public sealed class GoapAgent : MonoBehaviour {
 
             // get the world state and the goal we want to plan for
             HashSet<KeyValuePair<string,object>> worldState = dataProvider.GetWorldState();
+            Debug.Log("Current state: " + PrettyPrint(worldState));
             HashSet<KeyValuePair<string,object>> goal = dataProvider.CreateGoalState();
 
             // Plan

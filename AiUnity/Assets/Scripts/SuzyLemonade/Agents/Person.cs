@@ -20,7 +20,7 @@ public abstract class Person : MonoBehaviour, IGoap {
     public HashSet<KeyValuePair<string, object>> GetWorldState() {
         HashSet<KeyValuePair<string, object>> worldData = new HashSet<KeyValuePair<string, object>>();
 
-            // implement world data
+        // implement world data
         return worldData;
     }
 

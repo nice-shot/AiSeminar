@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 namespace SuzyLemonade {
 public class BusinessMan : Person {
+    public bool isWaitingInLine = false;
+
     /**
      * My current goal is to buy lemonade!
      */
