@@ -6,10 +6,13 @@ public class LemonadeStandComponent : MonoBehaviour {
     public int maxJars;
     public GameObject[] jarsArray;
 
+    private bool isSuzySelling;
+
     public void Awake() {
         // Assumes we're starting empty
         numJars = 0;
         maxJars = jarsArray.Length;
+        isSuzySelling = false;
         foreach (GameObject jar in jarsArray) {
             jar.SetActive(false);
         }
@@ -24,6 +27,14 @@ public class LemonadeStandComponent : MonoBehaviour {
         GameObject jar = jarsArray[numJars];
         jar.SetActive(true);
         numJars++;
+    }
+
+    public void SetSelling(bool isSelling) {
+        this.isSuzySelling = isSelling;
+    }
+
+    public bool GetSelling() {
+        return isSuzySelling;
     }
 }
 

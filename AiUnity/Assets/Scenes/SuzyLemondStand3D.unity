@@ -342,10 +342,6 @@ MonoBehaviour:
   lDoor: {fileID: 901205531}
   doorMovement: 1.25
   doorSpeed: 8
---- !u!4 &150009143 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 777c2630c60cc444899623a67c88d264, type: 3}
-  m_PrefabInternal: {fileID: 150009137}
 --- !u!1 &229150037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1254,20 @@ MonoBehaviour:
   heldItem: {fileID: 0}
   navAgent: {fileID: 1271042039}
   itemHolder: {fileID: 1404957627}
+--- !u!114 &1271042043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1271042038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0ec81deeb22480095f9b5bce699f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 2
 --- !u!4 &1271042045 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 91bf2b76396db42919950a3d38a29c42, type: 3}
@@ -1615,7 +1625,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43569a3581a4614590ba207157b90bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 150009143}
+  heldItem: {fileID: 0}
+  navAgent: {fileID: 1638242387}
+  itemHolder: {fileID: 0}
+--- !u!114 &1638242390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638242386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993a448c897114ebb907717b5507d306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 1
+--- !u!114 &1638242391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638242386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac83aa629b3df4035970bf53841e8dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 1
+--- !u!114 &1638242392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1638242386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3613970351d0466dbcfdb77a2236449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  target: {fileID: 0}
+  workDuration: 3
 --- !u!54 &1638242393
 Rigidbody:
   m_ObjectHideFlags: 0

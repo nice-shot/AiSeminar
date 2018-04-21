@@ -9,7 +9,7 @@ public class Suzy : Person {
      */
     public override HashSet<KeyValuePair<string, object>> CreateGoalState() {
         HashSet<KeyValuePair<string, object>> goal = new HashSet<KeyValuePair<string, object>>();
-        goal.Add(new KeyValuePair<string, object>("makeLemonade", true));
+        goal.Add(new KeyValuePair<string, object>("sellLemonade", true));
         return goal;
     }
 }

@@ -22,7 +22,7 @@ public class MakeLemonadeAction : SmartAction {
         return true;
     }
 
-    private static bool FilterLemonadeStand(GameObject stand) {
+    public static bool FilterLemonadeStand(GameObject stand) {
         LemonadeStandComponent lemonadeStand = stand.GetComponent<LemonadeStandComponent> ();
         return lemonadeStand.numJars < lemonadeStand.maxJars; 
     }
