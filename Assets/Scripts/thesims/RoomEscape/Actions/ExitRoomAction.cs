@@ -13,6 +13,8 @@ namespace RoomEscape {
         }
 
         protected override bool OnDone(GoapAgent agent, WithContext context) {
+            EscapeDude escapeAgent = agent as EscapeDude;
+            escapeAgent.hasEscaped = true;
             Debug.Log("<color=green>Finished!</color>");
             return base.OnDone(agent, context);
         }

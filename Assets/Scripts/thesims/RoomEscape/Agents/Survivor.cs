@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+using Infra.Utils;
 using Ai.Goap;
 using Ai.AStar;
 
@@ -10,14 +12,25 @@ namespace RoomEscape {
         public float moveSpeed;
         public Text thoughtBubble;
 
+        [SerializeField]
+        private Container holding;
+
         private readonly State state = new State();
 
         protected override void Awake() {
             base.Awake();
+
+            if (holding == null) {
+                holding = GetComponent<Container>();
+            }
             thoughtBubble = GetComponentInChildren<Text>();
         }
 
         public override State GetState() {
+            foreach (ItemType itemType in EnumUtils.EnumValues<ItemType>()) {
+                if (itemType == ItemType.None) continue;
+                state["has" + itemType.ToString()] = new StateValue(itemType == holding.itemType);
+            }
             state["x"] = new StateValue(transform.position.x);
             state["y"] = new StateValue(transform.position.y);
             return state;

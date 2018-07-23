@@ -7,8 +7,11 @@ namespace RoomEscape {
         private WorldGoal[] worldGoals;
         private int goalIndex;
 
+        public bool hasEscaped;
+
         protected override void Awake() {
             base.Awake();
+            hasEscaped = false;
             Goal mainGoal = new Goal();
             mainGoal["escaped"] = new Condition(CompareType.Equal, true);
             Goal secondaryGoal = new Goal();
@@ -40,6 +43,12 @@ namespace RoomEscape {
             base.PlanFound(goal, actions);
             // Once a plan was found we can come back to the main goal
             goalIndex = 0;
+        }
+
+        public override State GetState() {
+            State state = base.GetState();
+            state["escaped"] = new StateValue(hasEscaped);
+            return state;
         }
     }
 }
