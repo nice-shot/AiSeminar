@@ -2,7 +2,7 @@
 using Ai.Goap;
 
 namespace RoomEscape {
-    public class OpenDoorAction : GoapAction {
+    public class OpenDoorAction : ActionBase {
 
         private List<IStateful> targets;
 
@@ -22,7 +22,7 @@ namespace RoomEscape {
         }
 
         public override List<IStateful> GetAllTargets(GoapAgent agent) {
-            return targets;
+            return GetTargetsFromMemory<Door>(agent);
         }
 
         protected override bool OnDone(GoapAgent agent, WithContext context) {
@@ -33,6 +33,11 @@ namespace RoomEscape {
                 return false;
             } else {
                 target.Open();
+                // Add the new room to memory
+                Memory memory = agent.GetComponent<Memory>();
+                if (memory != null) {
+                    memory.AddLocationToMemory(target.leadsToRoom);
+                }
             }
 
             return true;

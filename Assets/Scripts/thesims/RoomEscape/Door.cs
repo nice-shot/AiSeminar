@@ -3,6 +3,7 @@ using Ai.Goap;
 
 namespace RoomEscape {
     public class Door : MonoBehaviour, IStateful {
+        public GameObject leadsToRoom;
         [SerializeField]
         private bool isOpen;
         [SerializeField]

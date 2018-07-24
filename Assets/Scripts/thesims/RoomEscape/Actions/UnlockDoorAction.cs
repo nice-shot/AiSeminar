@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Ai.Goap;
 
 namespace RoomEscape {
-    public class UnlockDoorAction : GoapAction {
+    public class UnlockDoorAction : ActionBase {
         private List<IStateful> targets;
 
         void Awake() {
@@ -20,7 +20,7 @@ namespace RoomEscape {
         }
 
         public override List<IStateful> GetAllTargets(GoapAgent agent) {
-            return targets;
+            return GetTargetsFromMemory<Door>(agent);
         }
 
         public override bool RequiresInRange() {

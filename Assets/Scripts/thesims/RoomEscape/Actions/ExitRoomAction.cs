@@ -2,7 +2,7 @@
 using Ai.Goap;
 
 namespace RoomEscape {
-    public class ExitRoomAction : GoapAction {
+    public class ExitRoomAction : ActionBase {
         public override bool RequiresInRange() {
             return false;
         }

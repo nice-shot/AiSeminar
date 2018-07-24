@@ -6,7 +6,7 @@ using Ai.Goap;
 
 
 namespace RoomEscape {
-    public class PickUpItemAction : GoapAction {
+    public class PickUpItemAction : ActionBase {
         public ItemType itemType;
         private List<IStateful> targets;
         
@@ -25,7 +25,7 @@ namespace RoomEscape {
         }
 
         public override List<IStateful> GetAllTargets(GoapAgent agent) {
-            return targets;
+            return GetTargetsFromMemory<ItemSpot>(agent);
         }
 
         protected override bool OnDone(GoapAgent agent, WithContext context) {
