@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b342c02fdd7f0bc48ba4e6afa871202d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leadsToRoom: {fileID: 1402386738}
+  leadsToRoom: {fileID: 751171203}
   isOpen: 0
   isLocked: 1
 --- !u!212 &327500815
@@ -196,10 +196,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 327500813}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.16, y: 3.57, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.234466, y: -4.166658, z: 0}
+  m_LocalScale: {x: 2.7586002, y: 1.6666629, z: 1}
   m_Children: []
-  m_Father: {fileID: 751171205}
+  m_Father: {fileID: 1402386740}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541397505
@@ -288,7 +288,7 @@ Transform:
   m_Children:
   - {fileID: 1082819228}
   m_Father: {fileID: 751171205}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -17.698}
 --- !u!1 &596676229
 GameObject:
@@ -478,7 +478,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1750046292}
-  - {fileID: 327500816}
   - {fileID: 549471658}
   - {fileID: 2146558804}
   - {fileID: 944713028}
@@ -760,7 +759,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 751171205}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &951398511
 GameObject:
@@ -1078,6 +1077,7 @@ Transform:
   m_LocalScale: {x: 0.3625027, y: 0.60000134, z: 1}
   m_Children:
   - {fileID: 832564947}
+  - {fileID: 327500816}
   m_Father: {fileID: 1441658850}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1365,7 +1365,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1814531823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.41, y: -1.17, z: 0}
+  m_LocalPosition: {x: -1.53, y: 6.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1484416230}
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38647750cb7a28d43ae77546b97431da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLocation: {fileID: 751171203}
+  startingLocation: {fileID: 1402386738}
 --- !u!1 &1948602037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,5 +1616,5 @@ Transform:
   m_Children:
   - {fileID: 809415522}
   m_Father: {fileID: 751171205}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -22.236002}
