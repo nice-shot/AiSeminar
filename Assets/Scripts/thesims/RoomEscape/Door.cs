@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using Ai.Goap;
 
 namespace RoomEscape {
@@ -10,9 +11,28 @@ namespace RoomEscape {
         private bool isLocked;
 
         private bool lockChecked;
+        private Animator animator;
+        private NavMeshObstacle navObstacle;
+
+        // Animation params
+        private int openAnim = Animator.StringToHash("Open");
 
         void Awake() {
             lockChecked = false;
+            animator = GetComponent<Animator>();
+            navObstacle = GetComponent<NavMeshObstacle>();
+            
+            UpdateState();
+        }
+
+        private void UpdateState() {
+            if (animator != null) {
+                animator.SetBool(openAnim, isOpen);
+            }
+
+            if (navObstacle != null) {
+                navObstacle.enabled = !isOpen;
+            }
         }
         
         public State GetState() {
@@ -35,10 +55,12 @@ namespace RoomEscape {
 
         public void Open() {
             isOpen = true;
+            UpdateState();
         }
 
         public void Close() {
             isOpen = false;
+            UpdateState();
         }
     }
 }
