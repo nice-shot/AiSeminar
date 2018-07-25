@@ -87,10 +87,10 @@ namespace RoomEscape {
         private bool Move2D(GoapAction.WithContext nextAction) { 
             // Move towards the NextAction's target.
             float step = moveSpeed * Time.deltaTime;
-            var target = nextAction.target as Component;
+            Component target = nextAction.target as Component;
             // NOTE: We must cast to Vector2, otherwise we'll compare the Z coordinate
             //       which does not have to match!
-            var position = (Vector2)target.transform.position;
+            Vector2 position = (Vector2)target.transform.position;
             // TODO: Move by setting the velocity of a rigid body to allow collisions.
             transform.position = Vector2.MoveTowards(transform.position, position, step);
 
@@ -103,8 +103,17 @@ namespace RoomEscape {
         }
 
         private bool Move3D(GoapAction.WithContext nextAction) {
-            var target = nextAction.target as Component;
-            navAgent.SetDestination(target.transform.position);
+            Component target = nextAction.target as Component;
+            // Game object with name "NavTarget" marks where to navigate to
+            Transform navTarget = target.transform.Find("NavTarget");
+
+            if (navTarget != null) {
+                navAgent.SetDestination(navTarget.position);
+                //navAgent.SetDestination(target.transform.position);
+            } else {
+                navAgent.SetDestination(target.transform.position);
+            }
+
 
             if (!navAgent.pathPending) {
                 if (navAgent.remainingDistance <= navAgent.stoppingDistance) {
