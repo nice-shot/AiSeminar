@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.AI;
 using Infra.Utils;
 using Ai.Goap;
 using Ai.AStar;
 
 namespace RoomEscape {
     public abstract class Survivor : GoapAgent {
+        [Tooltip("For 2D movement")]
         public float moveSpeed;
         public Text thoughtBubble;
 
         [SerializeField]
         private Container holding;
 
+        private NavMeshAgent navAgent;
         private readonly State state = new State();
 
         protected override void Awake() {
             base.Awake();
+
+            navAgent = GetComponent<NavMeshAgent>();
 
             if (holding == null) {
                 holding = GetComponent<Container>();
@@ -33,6 +37,7 @@ namespace RoomEscape {
             }
             state["x"] = new StateValue(transform.position.x);
             state["y"] = new StateValue(transform.position.y);
+            state["z"] = new StateValue(transform.position.z);
             return state;
         }
 
@@ -70,6 +75,14 @@ namespace RoomEscape {
         }
 
         public override bool MoveAgent(GoapAction.WithContext nextAction) {
+            if (navAgent != null) {
+                return Move3D(nextAction);
+            }
+
+            return Move2D(nextAction);
+        }
+
+        private bool Move2D(GoapAction.WithContext nextAction) { 
             // Move towards the NextAction's target.
             float step = moveSpeed * Time.deltaTime;
             var target = nextAction.target as Component;
@@ -84,6 +97,22 @@ namespace RoomEscape {
                 nextAction.isInRange = true;
                 return true;
             }
+            return false;
+        }
+
+        private bool Move3D(GoapAction.WithContext nextAction) {
+            var target = nextAction.target as Component;
+            navAgent.SetDestination(target.transform.position);
+
+            if (!navAgent.pathPending) {
+                if (navAgent.remainingDistance <= navAgent.stoppingDistance) {
+                    if (!navAgent.hasPath || navAgent.velocity.sqrMagnitude == 0f) {
+                        nextAction.isInRange = true;
+                        return true;
+                    }
+                }
+            }
+
             return false;
         }
     }

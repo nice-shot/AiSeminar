@@ -47,6 +47,7 @@ public abstract class Worker : GoapAgent {
         state["hasTool"].value = backpack.tool != null;
         state["x"] = new StateValue(transform.position.x);
         state["y"] = new StateValue(transform.position.y);
+        state["z"] = new StateValue(transform.position.z);
 
         return state;
     }

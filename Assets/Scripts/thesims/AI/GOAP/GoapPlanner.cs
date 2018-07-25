@@ -19,8 +19,9 @@ public static class GoapPlanner {
         worldState[agent] = agent.GetState();
 
         DebugUtils.Assert(worldState[agent].ContainsKey("x")
-            && worldState[agent].ContainsKey("x"),
-            "Agent's state must contain his position as 'x' and 'y' keys");
+                          && worldState[agent].ContainsKey("y")
+                          && worldState[agent].ContainsKey("z"),
+                          "Agent's state must contain his position as 'x', 'y' and 'z' keys");
 
         var path = AStarSearch.Search(agent, worldState, goal);
 

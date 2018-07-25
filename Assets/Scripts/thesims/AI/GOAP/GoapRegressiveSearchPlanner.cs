@@ -24,8 +24,9 @@ public static class GoapRegressiveSearchPlanner {
         var regressiveSearchGoal = RegressiveSearchWorldGoal.Borrow(goal);
 
         DebugUtils.Assert(worldState[agent].ContainsKey("x")
-            && worldState[agent].ContainsKey("x"),
-            "Agent's state must contain his position as 'x' and 'y' keys");
+                          && worldState[agent].ContainsKey("y")
+                          && worldState[agent].ContainsKey("z"),
+                          "Agent's state must contain his position as 'x' and 'y' keys");
 
         var path = AStarSearch.Search(agent, regressiveSearchGoal, worldState, true);
         worldState.ReturnSelf();

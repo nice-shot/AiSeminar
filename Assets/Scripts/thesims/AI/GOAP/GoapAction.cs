@@ -220,8 +220,10 @@ public abstract class GoapAction : MonoBehaviour {
                 var obj = target as Component;
                 var x = StateValue.NormalizeValue(obj.transform.position.x);
                 var y = StateValue.NormalizeValue(obj.transform.position.y);
+                var z = StateValue.NormalizeValue(obj.transform.position.z);
                 agentState["x"] = new StateValue(x);
                 agentState["y"] = new StateValue(y);
+                agentState["z"] = new StateValue(z);
             }
             return worldState;
         }
@@ -257,9 +259,11 @@ public abstract class GoapAction : MonoBehaviour {
             var travelCost = 0f;
             if (actionData.RequiresInRange()) {
                 var agentState = worldState[agent];
-                var currentPosition = new Vector2((int)agentState["x"].value, (int)agentState["y"].value);
+                var currentPosition = new Vector3((int)agentState["x"].value,
+                                                  (int)agentState["y"].value,
+                                                  (int)agentState["z"].value);
                 var obj = target as Component;
-                var travelVector = (Vector2)obj.transform.position - currentPosition;
+                var travelVector = obj.transform.position - currentPosition;
                 travelCost = travelVector.magnitude;
                 //DebugUtils.Log(travelCost + " to " + obj.name);
             }
@@ -272,9 +276,9 @@ public abstract class GoapAction : MonoBehaviour {
             var travelCost = 0f;
             if (actionData.RequiresInRange()) {
                 if (goal.agentGoalPosition != null) {
-                    var goalPosition = (Vector2)goal.agentGoalPosition;
+                    var goalPosition = (Vector3)goal.agentGoalPosition;
                     var obj = target as Component;
-                    var travelVector = (Vector2)obj.transform.position - goalPosition;
+                    var travelVector = obj.transform.position - goalPosition;
                     travelCost = travelVector.magnitude;
                     //DebugUtils.Log(travelCost + " to " + obj.name);
                 }

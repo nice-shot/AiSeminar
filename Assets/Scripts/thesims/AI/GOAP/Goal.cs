@@ -102,7 +102,7 @@ public class RegressiveSearchWorldGoal : WorldGoal, IState {
     private static ObjectPool<RegressiveSearchWorldGoal> pool = new ObjectPool<RegressiveSearchWorldGoal>(100, 40);
     private static int lastPoolSize = 100;
 
-    public Vector2? agentGoalPosition;
+    public Vector3? agentGoalPosition;
 
     public static new void ReportLeaks() {
         var poolSize = pool.Count;
@@ -174,8 +174,10 @@ public class RegressiveSearchWorldGoal : WorldGoal, IState {
         // Add distance to current position.
         if (agentGoalPosition != null) {
             var agentState = worldState[goapAgent];
-            var currentPosition = new Vector2((int)agentState["x"].value, (int)agentState["y"].value);
-            var travelVector = (Vector2)agentGoalPosition - currentPosition;
+            var currentPosition = new Vector3((int)agentState["x"].value,
+                                              (int)agentState["y"].value,
+                                              (int)agentState["z"].value);
+            var travelVector = (Vector3)agentGoalPosition - currentPosition;
             cost += travelVector.magnitude;
         }
         // Add heuristic cost for regressive search - number of unmet goals.
