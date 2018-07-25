@@ -31,9 +31,11 @@ namespace RoomEscape {
         }
 
         public override State GetState() {
-            foreach (ItemType itemType in EnumUtils.EnumValues<ItemType>()) {
-                if (itemType == ItemType.None) continue;
-                state["has" + itemType.ToString()] = new StateValue(itemType == holding.itemType);
+            if (holding != null) {
+                foreach (ItemType itemType in EnumUtils.EnumValues<ItemType>()) {
+                    if (itemType == ItemType.None) continue;
+                    state["has" + itemType.ToString()] = new StateValue(itemType == holding.itemType);
+                }
             }
             state["x"] = new StateValue(transform.position.x);
             state["y"] = new StateValue(transform.position.y);
