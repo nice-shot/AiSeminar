@@ -1,38 +1,37 @@
 ﻿using UnityEngine;
 
 namespace RoomEscape {
-    public enum ItemType {
-        None,
-        Key,
-        Axe
-    }
-
     // Simple container for a single item
     public class Container : MonoBehaviour {
-        public GameObject item;
-        public ItemType itemType;
+        [SerializeField] private Item item;
+        [SerializeField] private Transform itemPlacement;
 
         private void Awake() {
-            if (item == null) {
-                itemType = ItemType.None;
+            if (itemPlacement == null) {
+                itemPlacement = this.transform;
             }
         }
 
-        public void SwitchItems(Container other) {
-            GameObject theirItem = other.item;
-            ItemType theirType = other.itemType;
-
-            if (item != null) {
-                item.transform.SetParent(other.transform);
+        public void DropItem(Transform newPlacement = null) {
+            if (item == null) {
+                return;
             }
-            other.item = item;
-            other.itemType = itemType;
 
-            if (theirItem != null) {
-                theirItem.transform.SetParent(other.transform);
+            item.transform.SetParent(newPlacement);
+            item = null;
+        }
+
+        public void PickUpItem(Item newItem) {
+            DropItem();
+            newItem.transform.SetParent(itemPlacement);
+            item = newItem;
+        }
+
+        public ItemType GetItemType() {
+            if (item == null) {
+                return ItemType.None;
             }
-            item = theirItem;
-            itemType = theirType;
+            return item.type;
         }
     }
 }

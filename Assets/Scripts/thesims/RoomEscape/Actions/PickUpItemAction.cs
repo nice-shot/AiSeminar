@@ -8,16 +8,12 @@ using Ai.Goap;
 namespace RoomEscape {
     public class PickUpItemAction : ActionBase {
         public ItemType itemType;
-        private List<IStateful> targets;
         
         void Awake() {
-            AddTargetPrecondition("has" + itemType.ToString(), CompareType.Equal, true);
-            AddTargetEffect("has" + itemType.ToString(), ModificationType.Set, false);
-            AddEffect("has" + itemType.ToString(), ModificationType.Set, true);
-        }
-
-        void Start() {
-            targets = GetTargets<ItemSpot>();
+            AddTargetPrecondition("type", CompareType.Equal, (int)itemType);
+            AddEffect("hasItem", ModificationType.Set, (int)itemType);
+            // Need to not hold anything in order to pickup an item
+            AddPrecondition("hasItem", CompareType.Equal, (int)ItemType.None);
         }
 
         public override bool RequiresInRange() {
@@ -25,21 +21,21 @@ namespace RoomEscape {
         }
 
         public override List<IStateful> GetAllTargets(GoapAgent agent) {
-            return GetTargetsFromMemory<ItemSpot>(agent);
+            return GetTargetsFromMemory<Item>(agent);
         }
 
         protected override bool OnDone(GoapAgent agent, WithContext context) {
             base.OnDone(agent, context);
-            var target = context.target as Component;
-            Container itemContainer = target.GetComponent<Container>();
-            Container agentContainer = agent.GetComponent<Container>();
+            Component target = context.target as Component;
+            Item targetItem = target.GetComponent<Item>();
+            Container container = agent.GetComponent<Container>();
 
             // Someone took the item by the time we got here
-            if (itemContainer.itemType != itemType) {
+            if (targetItem.type != itemType) {
                 return false;
             }
 
-            itemContainer.SwitchItems(agentContainer);
+            container.PickUpItem(targetItem);
             return true;
 
         }
