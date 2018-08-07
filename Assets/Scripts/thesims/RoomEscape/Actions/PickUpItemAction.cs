@@ -10,12 +10,12 @@ namespace RoomEscape {
         public ItemType itemType;
         
         void Awake() {
-            AddTargetPrecondition("type", CompareType.Equal, (int)itemType);
+            AddTargetPrecondition(States.TYPE, CompareType.Equal, (int)itemType);
             // Can only pick up visible objects
-            AddTargetPrecondition("visible", CompareType.Equal, true);
-            AddEffect("heldItem", ModificationType.Set, (int)itemType);
+            AddTargetPrecondition(States.VISIBLE, CompareType.Equal, true);
+            AddEffect(States.HELD_ITEM, ModificationType.Set, (int)itemType);
             // Need to not hold anything in order to pickup an item
-            AddPrecondition("heldItem", CompareType.Equal, (int)ItemType.None);
+            AddPrecondition(States.HELD_ITEM, CompareType.Equal, (int)ItemType.None);
         }
 
         public override bool RequiresInRange() {

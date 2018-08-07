@@ -5,9 +5,9 @@ namespace RoomEscape {
     public class OpenDoorAction : ActionBase {
 
         void Awake() {
-            AddTargetPrecondition("open", CompareType.Equal, false);
-            AddTargetPrecondition("locked", CompareType.Equal, false);
-            AddEffect("escapeRouteAvailable", ModificationType.Set, true);
+            AddTargetPrecondition(States.OPEN, CompareType.Equal, false);
+            AddTargetPrecondition(States.LOCKED, CompareType.Equal, false);
+            AddEffect(States.ESCAPE_ROUTE_AVAILABLE, ModificationType.Set, true);
         }
 
         public override bool RequiresInRange() {

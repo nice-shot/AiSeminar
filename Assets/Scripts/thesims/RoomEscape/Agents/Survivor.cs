@@ -32,11 +32,11 @@ namespace RoomEscape {
 
         public override State GetState() {
             if (holding != null) {
-                state["heldItem"] = new StateValue((int)holding.GetItemType());
+                state[States.HELD_ITEM] = new StateValue((int)holding.GetItemType());
             }
-            state["x"] = new StateValue(transform.position.x);
-            state["y"] = new StateValue(transform.position.y);
-            state["z"] = new StateValue(transform.position.z);
+            state[States.X] = new StateValue(transform.position.x);
+            state[States.Y] = new StateValue(transform.position.y);
+            state[States.Z] = new StateValue(transform.position.z);
             return state;
         }
 

@@ -13,9 +13,9 @@ namespace RoomEscape {
             base.Awake();
             hasEscaped = false;
             Goal mainGoal = new Goal();
-            mainGoal["escaped"] = new Condition(CompareType.Equal, true);
+            mainGoal[States.ESCAPED] = new Condition(CompareType.Equal, true);
             Goal secondaryGoal = new Goal();
-            secondaryGoal["explore"] = new Condition(CompareType.Equal, true);
+            secondaryGoal[States.EXPLORED] = new Condition(CompareType.Equal, true);
 
             WorldGoal mainWorldGoal = new WorldGoal();
             mainWorldGoal[this] = mainGoal;
@@ -47,7 +47,7 @@ namespace RoomEscape {
 
         public override State GetState() {
             State state = base.GetState();
-            state["escaped"] = new StateValue(hasEscaped);
+            state[States.ESCAPED] = new StateValue(hasEscaped);
             return state;
         }
     }

@@ -7,10 +7,10 @@ using Ai.Goap;
 namespace RoomEscape {
     public class UnlockDoorAction : ActionBase {
         void Awake() {
-            AddTargetEffect("locked", ModificationType.Set, false);
-            AddTargetPrecondition("locked", CompareType.Equal, true);
-            AddPrecondition("heldItem", CompareType.Equal, (int)ItemType.Key);
-            AddEffect("heldItem", ModificationType.Set, (int)ItemType.None);
+            AddTargetEffect(States.LOCKED, ModificationType.Set, false);
+            AddTargetPrecondition(States.LOCKED, CompareType.Equal, true);
+            AddPrecondition(States.HELD_ITEM, CompareType.Equal, (int)ItemType.Key);
+            AddEffect(States.HELD_ITEM, ModificationType.Set, (int)ItemType.None);
         }
 
         public override List<IStateful> GetAllTargets(GoapAgent agent) {

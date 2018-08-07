@@ -6,7 +6,7 @@ namespace RoomEscape {
     public class DropItemAction : ActionBase {
 
         void Awake() {
-            AddEffect("heldItem", Ai.Goap.ModificationType.Set, (int)ItemType.None);
+            AddEffect(States.HELD_ITEM, Ai.Goap.ModificationType.Set, (int)ItemType.None);
         }
 
         public override bool RequiresInRange() {

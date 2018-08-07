@@ -26,6 +26,8 @@ namespace RoomEscape {
         public void PickUpItem(Item newItem) {
             DropItem();
             newItem.transform.SetParent(itemPlacement);
+            newItem.transform.localPosition = Vector3.zero;
+            newItem.transform.localRotation = Quaternion.identity;
             item = newItem;
         }
 

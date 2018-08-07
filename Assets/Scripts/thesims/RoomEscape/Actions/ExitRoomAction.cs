@@ -8,8 +8,8 @@ namespace RoomEscape {
         }
 
         void Awake() {
-            AddEffect("escaped", ModificationType.Set, true);
-            AddPrecondition("escapeRouteAvailable", CompareType.Equal, true);
+            AddEffect(States.ESCAPED, ModificationType.Set, true);
+            AddPrecondition(States.ESCAPE_ROUTE_AVAILABLE, CompareType.Equal, true);
         }
 
         protected override bool OnDone(GoapAgent agent, WithContext context) {
