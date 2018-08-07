@@ -2328,6 +2328,12 @@ Transform:
   m_Father: {fileID: 742130321}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &377507407 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114764025476935908, guid: 72ce833797700c5479530ed6d2163f1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 420991343}
+  m_Script: {fileID: 11500000, guid: ca61c2174e892ba478f46c08f0f1eb34, type: 3}
 --- !u!43 &389765216
 Mesh:
   m_ObjectHideFlags: 0
@@ -28274,6 +28280,11 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 184278241}
+    - target: {fileID: 114428717495666452, guid: 9e438880920d61e4a914d03976310842,
+        type: 2}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 1981459577}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e438880920d61e4a914d03976310842, type: 2}
   m_IsPrefabParent: 0
@@ -31187,6 +31198,12 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!114 &1981459577 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114937527497808016, guid: 843b79693400a3b40abcc0309d121aab,
+    type: 2}
+  m_PrefabInternal: {fileID: 2071891259}
+  m_Script: {fileID: 11500000, guid: ca61c2174e892ba478f46c08f0f1eb34, type: 3}
 --- !u!1 &2034376364
 GameObject:
   m_ObjectHideFlags: 0
@@ -31570,6 +31587,11 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 826499802}
+    - target: {fileID: 114093985298893734, guid: 38b6f270ae89bca47b03a64663d337f3,
+        type: 2}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 377507407}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 38b6f270ae89bca47b03a64663d337f3, type: 2}
   m_IsPrefabParent: 0
@@ -31632,6 +31654,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4721539970547640, guid: 843b79693400a3b40abcc0309d121aab, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114937527497808016, guid: 843b79693400a3b40abcc0309d121aab,
+        type: 2}
+      propertyPath: visible
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
