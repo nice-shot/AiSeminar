@@ -8,10 +8,12 @@ namespace RoomEscape {
         private int goalIndex;
 
         public bool hasEscaped;
+        public bool escapeRoute;
 
         protected override void Awake() {
             base.Awake();
             hasEscaped = false;
+            escapeRoute = false;
             Goal mainGoal = new Goal();
             mainGoal[States.ESCAPED] = new Condition(CompareType.Equal, true);
             Goal secondaryGoal = new Goal();
@@ -48,6 +50,7 @@ namespace RoomEscape {
         public override State GetState() {
             State state = base.GetState();
             state[States.ESCAPED] = new StateValue(hasEscaped);
+            state[States.ESCAPE_ROUTE_AVAILABLE] = new StateValue(escapeRoute);
             return state;
         }
     }

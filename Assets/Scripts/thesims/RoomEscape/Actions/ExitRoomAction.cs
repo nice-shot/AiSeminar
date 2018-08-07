@@ -14,6 +14,7 @@ namespace RoomEscape {
 
         protected override bool OnDone(GoapAgent agent, WithContext context) {
             Debug.Log("<color=green>Finished!</color>");
+            SimulationManager.instance.Stop();
             return base.OnDone(agent, context);
         }
     }
