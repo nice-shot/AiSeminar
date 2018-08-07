@@ -6,17 +6,11 @@ using Ai.Goap;
 
 namespace RoomEscape {
     public class UnlockDoorAction : ActionBase {
-        private List<IStateful> targets;
-
         void Awake() {
             AddTargetEffect("locked", ModificationType.Set, false);
             AddTargetPrecondition("locked", CompareType.Equal, true);
-            AddPrecondition("has" + ItemType.Key.ToString(), CompareType.Equal, true);
-            AddEffect("has" + ItemType.Key.ToString(), ModificationType.Set, false);
-        }
-
-        void Start() {
-            targets = GetTargets<Door>();
+            AddPrecondition("heldItem", CompareType.Equal, (int)ItemType.Key);
+            AddEffect("heldItem", ModificationType.Set, (int)ItemType.None);
         }
 
         public override List<IStateful> GetAllTargets(GoapAgent agent) {
@@ -32,7 +26,7 @@ namespace RoomEscape {
 
             Container agentContainer = agent.GetComponent<Container>();
 
-            if (agentContainer.itemType != ItemType.Key || agentContainer.item == null) {
+            if (agentContainer.GetItemType() != ItemType.Key) {
                 // We don't have a key anymore
                 return false;
             }
@@ -40,9 +34,8 @@ namespace RoomEscape {
             Door target = context.target as Door;
             target.Unlock();
             // Destroy the key
-            agentContainer.itemType = ItemType.None;
-            Destroy(agentContainer.item);
-            agentContainer.item = null;
+            Item key = agentContainer.DropItem();
+            key.Hide();
 
             return true;
         }

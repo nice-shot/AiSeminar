@@ -12,13 +12,15 @@ namespace RoomEscape {
             }
         }
 
-        public void DropItem(Transform newPlacement = null) {
+        public Item DropItem(Transform newPlacement = null) {
             if (item == null) {
-                return;
+                return null;
             }
 
+            Item removedItem = item;
             item.transform.SetParent(newPlacement);
             item = null;
+            return removedItem;
         }
 
         public void PickUpItem(Item newItem) {
@@ -32,6 +34,10 @@ namespace RoomEscape {
                 return ItemType.None;
             }
             return item.type;
+        }
+
+        public Item GetItem() {
+            return item;
         }
     }
 }

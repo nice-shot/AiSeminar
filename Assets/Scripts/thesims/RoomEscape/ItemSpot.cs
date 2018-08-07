@@ -19,7 +19,7 @@ namespace RoomEscape {
             // Set state as "has<Item>" with true or false for each item
             foreach (var itemType in EnumUtils.EnumValues<ItemType>()) {
                 if (itemType == ItemType.None) continue;
-                state["has" + itemType.ToString()] = new StateValue(itemType == container.itemType);
+                state["has" + itemType.ToString()] = new StateValue(itemType == container.GetItemType());
             }
             return state;
         }
