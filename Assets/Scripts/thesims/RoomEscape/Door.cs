@@ -16,6 +16,7 @@ namespace RoomEscape {
 
         // Animation params
         private int openAnim = Animator.StringToHash("Open");
+        private int breakAnim = Animator.StringToHash("Break");
 
         void Awake() {
             lockChecked = false;
@@ -68,7 +69,7 @@ namespace RoomEscape {
             if (strength <= 0) {
                 isOpen = true;
                 isBroken = true; // Should add state for this since broken doors can't be closed
-                // Play break animation
+                animator.SetTrigger(breakAnim);
                 return true;
             }
             return false;
