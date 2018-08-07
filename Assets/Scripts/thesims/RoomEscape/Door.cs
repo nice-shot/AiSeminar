@@ -5,10 +5,10 @@ using Ai.Goap;
 namespace RoomEscape {
     public class Door : MonoBehaviour, IStateful {
         public GameObject leadsToRoom;
-        [SerializeField]
-        private bool isOpen;
-        [SerializeField]
-        private bool isLocked;
+        [SerializeField] private bool isOpen;
+        [SerializeField] private bool isLocked;
+        [SerializeField] private int strength;
+        private bool isBroken = false;
 
         private bool lockChecked;
         private Animator animator;
@@ -37,9 +37,9 @@ namespace RoomEscape {
         
         public State GetState() {
             State state = new State();
-            state["open"] = new StateValue(isOpen);
+            state[States.OPEN] = new StateValue(isOpen);
             // Assume unlocked if no one checked it yet
-            state["locked"] = new StateValue(lockChecked ? isLocked : false);
+            state[States.LOCKED] = new StateValue(lockChecked ? isLocked : false);
             return state;
         }
 
@@ -61,6 +61,17 @@ namespace RoomEscape {
         public void Close() {
             isOpen = false;
             UpdateState();
+        }
+
+        public bool Break(int power) {
+            strength -= power;
+            if (strength <= 0) {
+                isOpen = true;
+                isBroken = true; // Should add state for this since broken doors can't be closed
+                // Play break animation
+                return true;
+            }
+            return false;
         }
     }
 }

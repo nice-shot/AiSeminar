@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4383216464709200}
-  - component: {fileID: 114764025476935908}
+  - component: {fileID: 114523812624435552}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -1241,7 +1241,7 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
---- !u!114 &114764025476935908
+--- !u!114 &114523812624435552
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1249,9 +1249,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1530712958490576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca61c2174e892ba478f46c08f0f1eb34, type: 3}
+  m_Script: {fileID: 11500000, guid: 199a7a5fcf041a342aed224886a8e96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visible: 0
+  visible: 1
   type: 2
   graphic: {fileID: 0}
+  power: 1
+  durability: 2
