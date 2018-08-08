@@ -29,7 +29,11 @@ namespace RoomEscape {
 
             if (targetSearchable.Search() != ItemType.None) {
                 Container agentContainer = agent.GetComponent<Container>();
-                agentContainer.PickUpItem(targetSearchable.RetrieveItem());
+                Item foundItem = targetSearchable.RetrieveItem();
+                agentContainer.PickUpItem(foundItem);
+                successMsg = "Found " + foundItem.type;
+            } else {
+                return false;
             }
 
             return true;

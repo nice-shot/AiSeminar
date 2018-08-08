@@ -32,9 +32,11 @@ namespace RoomEscape {
             Door targetDoor = target.GetComponent<Door>();
 
             bool broke = targetDoor.Break(axe.Hit());
+            failMsg = "Didn't Break!";
             if (!axe.gameObject.activeSelf) {
                 // The axe broke so we'll drop it
                 agentContainer.DropItem();
+                failMsg = "Axe Broke!";
             }
             
             if (broke) {

@@ -11,6 +11,7 @@ namespace RoomEscape {
     public abstract class Survivor : GoapAgent {
         [Tooltip("For 2D movement")]
         public float moveSpeed;
+        public ThoughtBubbleController newThoughtBubble;
         public Text thoughtBubble;
 
         [SerializeField]
@@ -18,6 +19,7 @@ namespace RoomEscape {
 
         private NavMeshAgent navAgent;
         private readonly State state = new State();
+        private ActionBase currentAction;
 
         protected override void Awake() {
             base.Awake();
@@ -27,7 +29,9 @@ namespace RoomEscape {
             if (holding == null) {
                 holding = GetComponent<Container>();
             }
-            thoughtBubble = GetComponentInChildren<Text>();
+            if (thoughtBubble == null) {
+                thoughtBubble = GetComponentInChildren<Text>();
+            }
         }
 
         public override State GetState() {
@@ -47,6 +51,7 @@ namespace RoomEscape {
             //       goal again.
             // TODO: Support multiple goals and select the next one.
             thoughtBubble.text = "...";
+            newThoughtBubble.SetActionText("...");
             // Debug messages are called in the planner
         }
 
@@ -57,12 +62,18 @@ namespace RoomEscape {
 
         public override void AboutToDoAction(GoapAction.WithContext action) {
             thoughtBubble.text = action.actionData.name;
+            newThoughtBubble.SetActionText(action.actionData.name);
+            currentAction = action.actionData as ActionBase;
         }
 
         public override void ActionsFinished() {
             // Everything is done, we completed our actions for this gool. Hooray!
             Debug.Log("<color=blue>Actions completed</color>");
             thoughtBubble.text = "Job's Done!";
+            newThoughtBubble.SetActionText("Job's Done!");
+            if (currentAction.successMsg != "") {
+                newThoughtBubble.SetExtraText(currentAction.successMsg, true);
+            }
         }
 
         public override void PlanAborted(GoapAction.WithContext aborter) {
@@ -71,6 +82,10 @@ namespace RoomEscape {
             // again that it can succeed.
             Debug.Log("<color=red>Plan Aborted</color> " + aborter);
             thoughtBubble.text = "Hmp!";
+            newThoughtBubble.SetActionText("Hmp!");
+            if (currentAction.successMsg != "") {
+                newThoughtBubble.SetExtraText(currentAction.failMsg, false);
+            }
         }
 
         public override bool MoveAgent(GoapAction.WithContext nextAction) {
