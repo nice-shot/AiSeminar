@@ -70,6 +70,7 @@ namespace RoomEscape {
                 isOpen = true;
                 isBroken = true; // Should add state for this since broken doors can't be closed
                 animator.SetTrigger(breakAnim);
+                UpdateState();
                 return true;
             }
             return false;

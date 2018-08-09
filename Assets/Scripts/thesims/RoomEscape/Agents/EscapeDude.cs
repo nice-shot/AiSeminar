@@ -49,8 +49,8 @@ namespace RoomEscape {
 
         public override State GetState() {
             State state = base.GetState();
-            state[States.ESCAPED] = new StateValue(hasEscaped);
-            state[States.ESCAPE_ROUTE_AVAILABLE] = new StateValue(escapeRoute);
+//            state[States.ESCAPED] = new StateValue(hasEscaped);
+//            state[States.ESCAPE_ROUTE_AVAILABLE] = new StateValue(escapeRoute);
             return state;
         }
     }

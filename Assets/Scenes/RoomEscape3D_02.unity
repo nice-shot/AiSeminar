@@ -680,6 +680,7 @@ Transform:
   - {fileID: 437955592}
   - {fileID: 1027860139}
   - {fileID: 1482969828}
+  - {fileID: 1569869574}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2581,7 +2582,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh14616
+  m_Name: pb_Mesh13132
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -7455,6 +7456,7 @@ Transform:
   m_Children:
   - {fileID: 406217816}
   - {fileID: 287205851}
+  - {fileID: 966563127}
   m_Father: {fileID: 1611016098}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7671,6 +7673,47 @@ Transform:
   m_PrefabParentObject: {fileID: 4621713533426394, guid: b1d5fee5f597e8745af2db985164b7b6,
     type: 2}
   m_PrefabInternal: {fileID: 93879334}
+--- !u!1 &966563126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 966563127}
+  - component: {fileID: 966563128}
+  m_Layer: 0
+  m_Name: SafeSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &966563127
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 966563126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 742130321}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &966563128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 966563126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c3dc4588d9a974584eb2ec36adf505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isClear: 1
 --- !u!4 &1007796564 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4038550845402116, guid: 9e438880920d61e4a914d03976310842,
@@ -28273,6 +28316,7 @@ MonoBehaviour:
   - {fileID: 437955593}
   - {fileID: 1482969829}
   - {fileID: 1027860140}
+  - {fileID: 1569869575}
   regressiveSearch: 0
   moveSpeed: 2
   newThoughtBubble: {fileID: 1508506416}
@@ -29422,6 +29466,50 @@ Transform:
   m_Father: {fileID: 668834967}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1569869573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1569869574}
+  - component: {fileID: 1569869575}
+  m_Layer: 0
+  m_Name: Go To Safe Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1569869574
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1569869573}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 127493823}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1569869575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1569869573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2520926f8b47f5544a21b61e99082bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  workDuration: 0
+  successMsg: Finished!
+  failMsg: 
 --- !u!1 &1585031136
 GameObject:
   m_ObjectHideFlags: 0
@@ -29748,7 +29836,7 @@ Prefab:
     - target: {fileID: 114646199533739312, guid: b1d5fee5f597e8745af2db985164b7b6,
         type: 2}
       propertyPath: strength
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 23534791895631808, guid: b1d5fee5f597e8745af2db985164b7b6,
         type: 2}
@@ -29768,7 +29856,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh14600
+  m_Name: pb_Mesh13114
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -29914,7 +30002,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh13200
+  m_Name: pb_Mesh13204
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

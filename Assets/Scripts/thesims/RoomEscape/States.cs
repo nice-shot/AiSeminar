@@ -13,8 +13,8 @@ public static class States {
     ESCAPE_ROUTE_AVAILABLE = "escapeRouteAvailable",
 
     // States for points of interest
-
     SEARCHED = "searched",
+    CLEAR = "clear", // Used in safe spots
 
     // Door States
     OPEN = "open",

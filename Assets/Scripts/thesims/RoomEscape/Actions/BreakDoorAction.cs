@@ -24,7 +24,6 @@ namespace RoomEscape {
         protected override bool OnDone(GoapAgent agent, WithContext context) {
             base.OnDone(agent, context);
 
-            EscapeDude agentDude = agent as EscapeDude;
             Container agentContainer = agent.GetComponent<Container>();
             Axe axe = agentContainer.GetItem() as Axe; // Should probably error check this
 
@@ -38,11 +37,15 @@ namespace RoomEscape {
                 agentContainer.DropItem();
                 failMsg = "Axe Broke!";
             }
-            
-            if (broke) {
-                agentDude.escapeRoute = true;
-            }
 
+            if (broke) {
+                // Add the new room to memory
+                Memory memory = agent.GetComponent<Memory>();
+                if (memory != null) {
+                    memory.AddLocationToMemory(targetDoor.leadsToRoom);
+                }
+            }
+            
             return broke;
         }
     }

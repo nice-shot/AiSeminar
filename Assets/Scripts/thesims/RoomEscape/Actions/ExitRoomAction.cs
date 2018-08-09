@@ -2,6 +2,7 @@
 using Ai.Goap;
 
 namespace RoomEscape {
+    // This action is used to motivate agents to get out of rooms
     public class ExitRoomAction : ActionBase {
         public override bool RequiresInRange() {
             return false;
@@ -13,8 +14,6 @@ namespace RoomEscape {
         }
 
         protected override bool OnDone(GoapAgent agent, WithContext context) {
-            Debug.Log("<color=green>Finished!</color>");
-            SimulationManager.instance.Stop();
             return base.OnDone(agent, context);
         }
     }
