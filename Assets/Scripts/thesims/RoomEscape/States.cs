@@ -8,6 +8,10 @@ public static class States {
     ESCAPED = "escaped",
     EXPLORED = "explored",
     HELD_ITEM = "heldItem",
+    
+    // Zombie states
+    EAT_BRAINS = "eatBrains",
+    WANDER = "wander",
 
     // States for actions
     ESCAPE_ROUTE_AVAILABLE = "escapeRouteAvailable",

@@ -20,6 +20,10 @@ namespace RoomEscape {
         private readonly State state = new State();
         private ActionBase currentAction;
 
+        // Used for multiple goals
+        protected WorldGoal[] worldGoals;
+        private int goalIndex = 0;
+
         protected override void Awake() {
             base.Awake();
 
@@ -40,6 +44,10 @@ namespace RoomEscape {
             return state;
         }
 
+        public override WorldGoal CreateGoalState() {
+            return worldGoals[goalIndex];
+        }
+
         public override void PlanFailed(WorldGoal failedGoal) {
             // If this happens for too long, there is probably a bug in the actions,
             // goals or world setup.
@@ -48,11 +56,17 @@ namespace RoomEscape {
             // TODO: Support multiple goals and select the next one.
             toughtBubble.SetActionText("...");
             // Debug messages are called in the planner
+
+            // Allow switching between multiple goals
+            goalIndex = (goalIndex + 1) % worldGoals.Length;
         }
 
         public override void PlanFound(WorldGoal goal, Queue<ITransition> actions) {
             // Yay we found a plan for our goal!
             Debug.Log("<color=green>Plan found</color> " + GoapAgent.PrettyPrint(actions));
+            
+            // Once a plan was found we can come back to the main goal
+            goalIndex = 0;
         }
 
         public override void AboutToDoAction(GoapAction.WithContext action) {
@@ -129,6 +143,16 @@ namespace RoomEscape {
             }
 
             return false;
+        }
+
+        protected WorldGoal[] GoalsToWorldGoal(Goal[] goals) {
+            WorldGoal[] worldGoals = new WorldGoal[goals.Length];
+            for (int i=0; i<goals.Length; i++) {
+                WorldGoal worldGoal = new WorldGoal();
+                worldGoal[this] = goals[i];
+                worldGoals[i] = worldGoal;
+            }
+            return worldGoals;
         }
     }
 }
