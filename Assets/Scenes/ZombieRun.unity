@@ -1308,6 +1308,7 @@ MonoBehaviour:
   successMsg: 
   failMsg: 
   wanderPool: {fileID: 1416967706}
+  wanderingMaxDistance: 2
 --- !u!1 &2100140550
 GameObject:
   m_ObjectHideFlags: 0
