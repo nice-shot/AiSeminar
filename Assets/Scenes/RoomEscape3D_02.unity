@@ -28319,8 +28319,7 @@ MonoBehaviour:
   - {fileID: 1569869575}
   regressiveSearch: 0
   moveSpeed: 2
-  newThoughtBubble: {fileID: 1508506416}
-  thoughtBubble: {fileID: 0}
+  toughtBubble: {fileID: 1508506416}
   holding: {fileID: 0}
   hasEscaped: 0
   escapeRoute: 0
@@ -30002,7 +30001,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh13204
+  m_Name: pb_Mesh13224
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

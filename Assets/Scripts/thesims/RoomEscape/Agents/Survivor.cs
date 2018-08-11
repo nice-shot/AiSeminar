@@ -11,8 +11,7 @@ namespace RoomEscape {
     public abstract class Survivor : GoapAgent {
         [Tooltip("For 2D movement")]
         public float moveSpeed;
-        public ThoughtBubbleController newThoughtBubble;
-        public Text thoughtBubble;
+        public ThoughtBubbleController toughtBubble;
 
         [SerializeField]
         private Container holding;
@@ -28,9 +27,6 @@ namespace RoomEscape {
 
             if (holding == null) {
                 holding = GetComponent<Container>();
-            }
-            if (thoughtBubble == null) {
-                thoughtBubble = GetComponentInChildren<Text>();
             }
         }
 
@@ -50,8 +46,7 @@ namespace RoomEscape {
             // TODO: Make sure the world state has changed before running the same
             //       goal again.
             // TODO: Support multiple goals and select the next one.
-            thoughtBubble.text = "...";
-            newThoughtBubble.SetActionText("...");
+            toughtBubble.SetActionText("...");
             // Debug messages are called in the planner
         }
 
@@ -61,18 +56,16 @@ namespace RoomEscape {
         }
 
         public override void AboutToDoAction(GoapAction.WithContext action) {
-            thoughtBubble.text = action.actionData.name;
-            newThoughtBubble.SetActionText(action.actionData.name);
+            toughtBubble.SetActionText(action.actionData.name);
             currentAction = action.actionData as ActionBase;
         }
 
         public override void ActionsFinished() {
             // Everything is done, we completed our actions for this gool. Hooray!
             Debug.Log("<color=blue>Actions completed</color>");
-            thoughtBubble.text = "Job's Done!";
-            newThoughtBubble.SetActionText("Job's Done!");
+            toughtBubble.SetActionText("Job's Done!");
             if (currentAction.successMsg != "") {
-                newThoughtBubble.SetExtraText(currentAction.successMsg, true);
+                toughtBubble.SetExtraText(currentAction.successMsg, true);
             }
         }
 
@@ -81,10 +74,9 @@ namespace RoomEscape {
             // Take note of what happened and make sure if you run the same goal
             // again that it can succeed.
             Debug.Log("<color=red>Plan Aborted</color> " + aborter);
-            thoughtBubble.text = "Hmp!";
-            newThoughtBubble.SetActionText("Hmp!");
+            toughtBubble.SetActionText("Hmp!");
             if (currentAction.successMsg != "") {
-                newThoughtBubble.SetExtraText(currentAction.failMsg, false);
+                toughtBubble.SetExtraText(currentAction.failMsg, false);
             }
         }
 
