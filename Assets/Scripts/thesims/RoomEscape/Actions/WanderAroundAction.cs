@@ -27,10 +27,15 @@ namespace RoomEscape {
         private Vector3 GetRandomPosition(Vector3 origin, float distance, int layermask = -1) {
             Vector3 randomPosition = Random.insideUnitSphere * wanderingMaxDistance;
             randomPosition += origin;
-
             NavMeshHit navHit;
-            if (NavMesh.SamplePosition(randomPosition, out navHit, distance, layermask)) {
-                return navHit.position;
+            if (NavMesh.SamplePosition(randomPosition, out navHit, distance, NavMesh.AllAreas)) {
+                NavMeshPath path = new NavMeshPath();
+                if (NavMesh.CalculatePath(origin, navHit.position, NavMesh.AllAreas, path)) {
+                    if (path.status == NavMeshPathStatus.PathComplete) {
+                        Debug.DrawRay(navHit.position, Vector3.up * 3, Color.blue, 2f);
+                        return navHit.position;
+                    }
+                }
             }
 
             // Retries if there was a problem with the nav hit
