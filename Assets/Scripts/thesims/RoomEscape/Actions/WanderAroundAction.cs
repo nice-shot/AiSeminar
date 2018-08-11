@@ -12,16 +12,25 @@ namespace RoomEscape {
         public GameObjectPool wanderPool;
         public float wanderingMaxDistance;
 
-        private WanderPosition targetPosition;
+        private Dictionary<GoapAgent, WanderPosition> targetPositions = new Dictionary<GoapAgent, WanderPosition>();
+
+        //private WanderPosition targetPosition;
 
         void Awake() {
             AddEffect(States.WANDER, ModificationType.Set, true);    
         }
 
         public override List<IStateful> GetAllTargets(GoapAgent agent) {
+            if (!targetPositions.ContainsKey(agent)) {
+                targetPositions[agent] = null;
+            }
+
+            WanderPosition targetPosition = targetPositions[agent];
             if (targetPosition == null || !targetPosition.gameObject.activeInHierarchy) {
-                targetPosition = wanderPool.Borrow<WanderPosition>();
-                targetPosition.transform.position = GetRandomPosition(agent.transform.position, wanderingMaxDistance);
+                targetPositions[agent] = wanderPool.Borrow<WanderPosition>();
+                targetPosition = targetPositions[agent];
+                targetPosition.transform.position = GetRandomPosition(agent.transform.position,
+                                                                      wanderingMaxDistance);
             }
             
             return new List<IStateful> { targetPosition };
@@ -48,7 +57,7 @@ namespace RoomEscape {
         protected override bool OnDone(GoapAgent agent, WithContext context) {
             base.OnDone(agent, context);
             // TODO: Write a different gameobject pool or change this one to allow returning one object / just remove the pool.
-            targetPosition.ReturnSelf();
+            targetPositions[agent].ReturnSelf();
             //WanderPosition target = context.target as WanderPosition;
             //target.ReturnSelf();
             //Debug.Log("Active objects in pool: " + wanderPool.HasActiveObjects());
