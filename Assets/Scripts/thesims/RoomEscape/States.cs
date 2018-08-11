@@ -1,5 +1,6 @@
 ﻿// Used to store state names to avoid relying on strings
-public static class States {
+public 
+    class States {
     // Agent Basic States
     public const string
     X = "x",
