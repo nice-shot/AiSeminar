@@ -18,7 +18,8 @@ namespace RoomEscape {
         //private WanderPosition targetPosition;
 
         void Awake() {
-            AddEffect(States.WANDER, ModificationType.Set, true);    
+            AddEffect(States.WANDER, ModificationType.Set, true);
+            AddEffect(States.EXPLORED, ModificationType.Set, true);
         }
 
         public override List<IStateful> GetAllTargets(GoapAgent agent) {
@@ -65,6 +66,11 @@ namespace RoomEscape {
         protected override bool OnDone(GoapAgent agent, WithContext context) {
             base.OnDone(agent, context);
             targetPositions[agent].ReturnSelf();
+
+            SightSensor sight = agent.GetComponent<SightSensor>();
+            if (sight != null) {
+                sight.LookAround();
+            }
             return true;
         }
 

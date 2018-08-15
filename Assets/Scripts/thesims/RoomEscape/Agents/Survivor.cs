@@ -37,7 +37,6 @@ namespace RoomEscape {
         public override State GetState() {
             // Get data from all sensors
             foreach(SensorBase sensor in GetComponents<SensorBase>()) {
-                Debug.Log("Adding sensor base: " + sensor);
                 foreach (var stateVal in sensor.GetState()) {
                     state[stateVal.Key] = stateVal.Value;
                 }
@@ -86,7 +85,7 @@ namespace RoomEscape {
             // Everything is done, we completed our actions for this gool. Hooray!
             Debug.Log("<color=blue>Actions completed</color>");
             toughtBubble.SetActionText("Job's Done!");
-            if (currentAction.successMsg != "") {
+            if (currentAction != null && currentAction.successMsg != "") {
                 toughtBubble.SetExtraText(currentAction.successMsg, true);
             }
         }
