@@ -9,6 +9,7 @@ public
     ESCAPED = "escaped",
     EXPLORED = "explored",
     HELD_ITEM = "heldItem",
+    HP = "hitPoints",
     
     // Zombie states
     EAT_BRAINS = "eatBrains",

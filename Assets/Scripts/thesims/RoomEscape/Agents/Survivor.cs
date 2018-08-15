@@ -13,8 +13,8 @@ namespace RoomEscape {
         public float moveSpeed;
         public ThoughtBubbleController toughtBubble;
 
-        [SerializeField]
-        private Container holding;
+
+        [SerializeField] private Container holding;
 
         private NavMeshAgent navAgent;
         private readonly State state = new State();
@@ -35,6 +35,14 @@ namespace RoomEscape {
         }
 
         public override State GetState() {
+            // Get data from all sensors
+            foreach(SensorBase sensor in GetComponents<SensorBase>()) {
+                Debug.Log("Adding sensor base: " + sensor);
+                foreach (var stateVal in sensor.GetState()) {
+                    state[stateVal.Key] = stateVal.Value;
+                }
+            }
+
             if (holding != null) {
                 state[States.HELD_ITEM] = new StateValue((int)holding.GetItemType());
             }

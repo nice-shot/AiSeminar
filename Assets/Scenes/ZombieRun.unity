@@ -113,6 +113,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 3c196717fbe6ddd4da1865a98df4d2ed, type: 2}
+--- !u!1 &19885912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 19885913}
+  - component: {fileID: 19885914}
+  m_Layer: 0
+  m_Name: Attack Human
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &19885913
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 19885912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2100140551}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &19885914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 19885912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e31bada6d70284aaf1d4d830a25b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  workDuration: 0.5
+  successMsg: 
+  failMsg: 
+  power: 1
 --- !u!1 &107376977
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,13 +795,14 @@ GameObject:
   - component: {fileID: 1231533236}
   - component: {fileID: 1231533241}
   - component: {fileID: 1231533240}
+  - component: {fileID: 1231533242}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1231533236
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -863,6 +909,18 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1231533242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1231533235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a35703d0dbd27d4db218fc2de3bc42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints: 3
 --- !u!1 &1287321028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1183,7 @@ MonoBehaviour:
   currentPlan: []
   availableActions:
   - {fileID: 1719025221}
+  - {fileID: 19885914}
   regressiveSearch: 1
   moveSpeed: 0
   toughtBubble: {fileID: 455258538}
@@ -1142,7 +1201,7 @@ NavMeshAgent:
   m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1282,7 +1341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1606197650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,7 +1499,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1308715850017900, guid: b1d5fee5f597e8745af2db985164b7b6, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114646199533739312, guid: b1d5fee5f597e8745af2db985164b7b6,
         type: 2}
@@ -2427,6 +2486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1719025220}
+  - {fileID: 19885913}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2435,7 +2495,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh13226
+  m_Name: pb_Mesh17426
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

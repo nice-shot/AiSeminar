@@ -13,6 +13,7 @@ namespace RoomEscape {
         public float wanderingMaxDistance;
 
         private Dictionary<GoapAgent, WanderPosition> targetPositions = new Dictionary<GoapAgent, WanderPosition>();
+        private Dictionary<GoapAgent, Vector3> previousPositions = new Dictionary<GoapAgent, Vector3>();
 
         //private WanderPosition targetPosition;
 
@@ -23,6 +24,7 @@ namespace RoomEscape {
         public override List<IStateful> GetAllTargets(GoapAgent agent) {
             if (!targetPositions.ContainsKey(agent)) {
                 targetPositions[agent] = null;
+                previousPositions[agent] = agent.transform.position;
             }
 
             WanderPosition targetPosition = targetPositions[agent];
@@ -31,6 +33,12 @@ namespace RoomEscape {
                 targetPosition = targetPositions[agent];
                 targetPosition.transform.position = GetRandomPosition(agent.transform.position,
                                                                       wanderingMaxDistance);
+                previousPositions[agent] = agent.transform.position;
+            } else if (Vector3.Distance(previousPositions[agent], agent.transform.position) > wanderingMaxDistance) {
+                // Used in case the agent moved and is now away from the original wander position
+                targetPositions[agent].transform.position = GetRandomPosition(agent.transform.position,
+                                                                              wanderingMaxDistance);
+
             }
             
             return new List<IStateful> { targetPosition };
@@ -56,11 +64,7 @@ namespace RoomEscape {
 
         protected override bool OnDone(GoapAgent agent, WithContext context) {
             base.OnDone(agent, context);
-            // TODO: Write a different gameobject pool or change this one to allow returning one object / just remove the pool.
             targetPositions[agent].ReturnSelf();
-            //WanderPosition target = context.target as WanderPosition;
-            //target.ReturnSelf();
-            //Debug.Log("Active objects in pool: " + wanderPool.HasActiveObjects());
             return true;
         }
 
