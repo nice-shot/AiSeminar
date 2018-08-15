@@ -81,8 +81,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1175304051058542}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4621713533426394}
@@ -95,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308715850017900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 0, z: 6.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4177146320015268}
@@ -353,30 +353,30 @@ MonoBehaviour:
   - array: 090000000c00000014000000
   - array: 0b0000000e00000012000000
   _vertices:
-  - {x: 0, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 2, y: 4, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 2, y: 0, z: -0.25}
-  - {x: 2, y: 4, z: 0}
-  - {x: 2, y: 4, z: -0.25}
-  - {x: 2, y: 0, z: -0.25}
-  - {x: 0, y: 0, z: -0.25}
-  - {x: 2, y: 4, z: -0.25}
-  - {x: 0, y: 4, z: -0.25}
-  - {x: 0, y: 0, z: -0.25}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 4, z: -0.25}
-  - {x: 0, y: 4, z: 0}
-  - {x: 0, y: 4, z: 0}
-  - {x: 2, y: 4, z: 0}
-  - {x: 0, y: 4, z: -0.25}
-  - {x: 2, y: 4, z: -0.25}
-  - {x: 0, y: 0, z: -0.25}
-  - {x: 2, y: 0, z: -0.25}
-  - {x: 0, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0.125}
+  - {x: 2, y: 0, z: 0.125}
+  - {x: 0, y: 4, z: 0.125}
+  - {x: 2, y: 4, z: 0.125}
+  - {x: 2, y: 0, z: 0.125}
+  - {x: 2, y: 0, z: -0.125}
+  - {x: 2, y: 4, z: 0.125}
+  - {x: 2, y: 4, z: -0.125}
+  - {x: 2, y: 0, z: -0.125}
+  - {x: 0, y: 0, z: -0.125}
+  - {x: 2, y: 4, z: -0.125}
+  - {x: 0, y: 4, z: -0.125}
+  - {x: 0, y: 0, z: -0.125}
+  - {x: 0, y: 0, z: 0.125}
+  - {x: 0, y: 4, z: -0.125}
+  - {x: 0, y: 4, z: 0.125}
+  - {x: 0, y: 4, z: 0.125}
+  - {x: 2, y: 4, z: 0.125}
+  - {x: 0, y: 4, z: -0.125}
+  - {x: 2, y: 4, z: -0.125}
+  - {x: 0, y: 0, z: -0.125}
+  - {x: 2, y: 0, z: -0.125}
+  - {x: 0, y: 0, z: 0.125}
+  - {x: 2, y: 0, z: 0.125}
   _uv:
   - {x: 0, y: 0}
   - {x: -2, y: 0}
@@ -439,9 +439,57 @@ MonoBehaviour:
     angleError: 8
     areaError: 15
   dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 
-  m_SelectedEdges: []
-  m_selectedTriangles: 
+  m_selectedFaces: 000000000100000002000000030000000400000005000000
+  m_SelectedEdges:
+  - x: 0
+    y: 1
+  - x: 2
+    y: 0
+  - x: 1
+    y: 3
+  - x: 3
+    y: 2
+  - x: 4
+    y: 5
+  - x: 6
+    y: 4
+  - x: 5
+    y: 7
+  - x: 7
+    y: 6
+  - x: 8
+    y: 9
+  - x: 10
+    y: 8
+  - x: 9
+    y: 11
+  - x: 11
+    y: 10
+  - x: 12
+    y: 13
+  - x: 14
+    y: 12
+  - x: 13
+    y: 15
+  - x: 15
+    y: 14
+  - x: 16
+    y: 17
+  - x: 18
+    y: 16
+  - x: 17
+    y: 19
+  - x: 19
+    y: 18
+  - x: 20
+    y: 21
+  - x: 22
+    y: 20
+  - x: 21
+    y: 23
+  - x: 23
+    y: 22
+  m_selectedTriangles: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000150000001600000017000000
 --- !u!114 &114646199533739312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,6 +504,7 @@ MonoBehaviour:
   leadsToRoom: {fileID: 0}
   isOpen: 0
   isLocked: 1
+  strength: 0
 --- !u!208 &208824108796147236
 NavMeshObstacle:
   m_ObjectHideFlags: 1
