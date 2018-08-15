@@ -9,6 +9,7 @@ using Ai.Goap;
 namespace RoomEscape {
     public class RunAwayAction : ActionBase {
 
+        public float runAwayDistance;
         public GameObjectPool wanderPool;
         private Dictionary<GoapAgent, WanderPosition> agentPositions = new Dictionary<GoapAgent, WanderPosition>();
 
@@ -25,16 +26,19 @@ namespace RoomEscape {
             WanderPosition wanderPos = agentPositions[agent];
 
             DangerSensor dangerSensor = agent.GetComponent<DangerSensor>();
+            SightSensor sightSensor = agent.GetComponent<SightSensor>();
             List<IStateful> threats = dangerSensor.GetThreats();
 
-            Vector3 targetPosition = Vector3.zero;
+            //Vector3 targetPosition = Vector3.zero;
 
-            foreach (IStateful threat in threats) {
-                Component threatComp = threat as Component;
-                targetPosition = targetPosition + (agent.transform.position - threatComp.transform.position);
-            }
+            //foreach (IStateful threat in threats) {
+            //    Component threatComp = threat as Component;
+            //    targetPosition = targetPosition + (agent.transform.position - threatComp.transform.position);
+            //}
 
-            wanderPos.transform.position = (agent.transform.position + targetPosition) * 1;
+            //targetPosition = (agent.transform.position + targetPosition) * runAwayDistance;
+            //wanderPos.transform.position = sightSensor.GetRandomPosition(runAwayDistance, targetPosition);
+            wanderPos.transform.position = sightSensor.GetRandomPosition(runAwayDistance, agent.transform.position);
             
             return new List<IStateful> { wanderPos };
         }

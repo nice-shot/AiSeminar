@@ -84,6 +84,33 @@ namespace RoomEscape {
             return pointsOfInterest.FindAll(target => target is T);
         }
 
+        /// <summary>
+        /// Find random position in a given radius that can be reached
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <param name="origin"></param>
+        /// <param name="layermask"></param>
+        /// <returns></returns>
+        public Vector3 GetRandomPosition(float distance, Vector3 origin, int layermask = NavMesh.AllAreas) {
+            if (origin == null) {
+                origin = transform.position;
+            }
+            Vector3 randomPosition = Random.insideUnitSphere * distance;
+            randomPosition += origin;
+            NavMeshHit navHit;
+            if (NavMesh.SamplePosition(randomPosition, out navHit, distance, NavMesh.AllAreas)) {
+                NavMeshPath path = new NavMeshPath();
+                if (navAgent.CalculatePath(navHit.position, path)) {
+                    if (path.status == NavMeshPathStatus.PathComplete) {
+                        return navHit.position;
+                    }
+                }
+            }
+
+            // Retries if there was a problem with the nav hit
+            return GetRandomPosition(distance, origin, layermask);
+        }
+
         public override State GetState() {
             return state;
         }
