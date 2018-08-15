@@ -42,7 +42,10 @@ namespace RoomEscape {
         public override State GetState() {
             return state;
         }
-        
 
+        // Used to display vision radius
+        private void OnDrawGizmos() {
+            Gizmos.DrawWireSphere(transform.position, viewRadius);
+        }
     }
 }
