@@ -71,9 +71,13 @@ namespace RoomEscape {
         public override void PlanFound(WorldGoal goal, Queue<ITransition> actions) {
             // Yay we found a plan for our goal!
             Debug.Log("<color=green>Plan found</color> " + GoapAgent.PrettyPrint(actions));
-            
+
             // Once a plan was found we can come back to the main goal
-            goalIndex = 0;
+            if (actions.Count > 0) {
+                goalIndex = 0;
+            } else {
+                goalIndex++; // Avoid repeating the main goal once it's solved
+            }
         }
 
         public override void AboutToDoAction(GoapAction.WithContext action) {
