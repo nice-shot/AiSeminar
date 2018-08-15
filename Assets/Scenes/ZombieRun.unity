@@ -399,6 +399,50 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1 &199571606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 199571607}
+  - component: {fileID: 199571608}
+  m_Layer: 0
+  m_Name: Open Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &199571607
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 199571606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2100140551}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &199571608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 199571606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc77efe83829904cbe619e4a9d3d62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  workDuration: 0.2
+  successMsg: 
+  failMsg: 
 --- !u!114 &455258538 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114959696611831214, guid: 59a1a117666ce0946b18a8b5a69fa165,
@@ -773,7 +817,7 @@ Prefab:
         type: 2}
       propertyPath: agent
       value: 
-      objectReference: {fileID: 1606197649}
+      objectReference: {fileID: 1339807721}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59a1a117666ce0946b18a8b5a69fa165, type: 2}
   m_IsPrefabParent: 0
@@ -789,6 +833,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114631400946638514, guid: ee9960ce467141c4cbde5903a82fcab0,
+        type: 2}
+      propertyPath: availableActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4817550732389016, guid: ee9960ce467141c4cbde5903a82fcab0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 16
@@ -826,6 +875,21 @@ Prefab:
       propertyPath: toughtBubble
       value: 
       objectReference: {fileID: 480016429}
+    - target: {fileID: 114631400946638514, guid: ee9960ce467141c4cbde5903a82fcab0,
+        type: 2}
+      propertyPath: availableActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 199571608}
+    - target: {fileID: 114631400946638514, guid: ee9960ce467141c4cbde5903a82fcab0,
+        type: 2}
+      propertyPath: availableActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1688763937}
+    - target: {fileID: 195025233990191136, guid: ee9960ce467141c4cbde5903a82fcab0,
+        type: 2}
+      propertyPath: m_StoppingDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee9960ce467141c4cbde5903a82fcab0, type: 2}
   m_IsPrefabParent: 0
@@ -1425,16 +1489,73 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1308715850017900, guid: b1d5fee5f597e8745af2db985164b7b6, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114646199533739312, guid: b1d5fee5f597e8745af2db985164b7b6,
         type: 2}
       propertyPath: isOpen
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114646199533739312, guid: b1d5fee5f597e8745af2db985164b7b6,
+        type: 2}
+      propertyPath: isLocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039727082441466, guid: b1d5fee5f597e8745af2db985164b7b6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.12500024
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039727082441466, guid: b1d5fee5f597e8745af2db985164b7b6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.5000002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1d5fee5f597e8745af2db985164b7b6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1688763935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1688763936}
+  - component: {fileID: 1688763937}
+  m_Layer: 0
+  m_Name: Exit Room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1688763936
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1688763935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2100140551}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1688763937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1688763935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138dcfe9d03832c46aa8ef90168daeb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  workDuration: 0
+  successMsg: 
+  failMsg: 
 --- !u!1 &1719025219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1607,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-29732
+  m_Name: pb_Mesh-180144
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2413,6 +2534,8 @@ Transform:
   m_Children:
   - {fileID: 1719025220}
   - {fileID: 19885913}
+  - {fileID: 199571607}
+  - {fileID: 1688763936}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
