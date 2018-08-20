@@ -1183,6 +1183,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1475177206 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23534791895631808, guid: b1d5fee5f597e8745af2db985164b7b6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1658691280}
 --- !u!1001 &1658691280
 Prefab:
   m_ObjectHideFlags: 0
@@ -1269,6 +1274,26 @@ Prefab:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114646199533739312, guid: b1d5fee5f597e8745af2db985164b7b6,
+        type: 2}
+      propertyPath: highlightColor.r
+      value: 0.48776254
+      objectReference: {fileID: 0}
+    - target: {fileID: 114646199533739312, guid: b1d5fee5f597e8745af2db985164b7b6,
+        type: 2}
+      propertyPath: highlightColor.g
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 114646199533739312, guid: b1d5fee5f597e8745af2db985164b7b6,
+        type: 2}
+      propertyPath: highlightColor.b
+      value: 0.5575997
+      objectReference: {fileID: 0}
+    - target: {fileID: 114646199533739312, guid: b1d5fee5f597e8745af2db985164b7b6,
+        type: 2}
+      propertyPath: meshRenderer
+      value: 
+      objectReference: {fileID: 1475177206}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1d5fee5f597e8745af2db985164b7b6, type: 2}
   m_IsPrefabParent: 0
