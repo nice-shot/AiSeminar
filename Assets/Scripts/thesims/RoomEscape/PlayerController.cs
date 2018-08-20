@@ -20,7 +20,6 @@ namespace RoomEscape {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, RAYCAST_DISTANCE)) { 
-                    Debug.Log("Pressed mouse on " + hit.point);
                     navAgent.SetDestination(hit.point);
                     navAgent.isStopped = false;
                 }

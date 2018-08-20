@@ -348,6 +348,36 @@ MonoBehaviour:
   workDuration: 0.2
   successMsg: 
   failMsg: 
+--- !u!1 &221605368 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1308715850017900, guid: b1d5fee5f597e8745af2db985164b7b6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1658691280}
+--- !u!114 &221605373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 221605368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a21963e042044724ea7b88ea9f362b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 0.73985404, g: 0.9622642, b: 0.7906462, a: 0}
+  meshRenderer: {fileID: 1475177206}
+--- !u!65 &221605374
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 221605368}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0000005, y: 4, z: 0.25}
+  m_Center: {x: 1.0000002, y: 2, z: 0}
 --- !u!1 &399971534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,6 +1181,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1475177206 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23534791895631808, guid: b1d5fee5f597e8745af2db985164b7b6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1658691280}
 --- !u!1001 &1658691280
 Prefab:
   m_ObjectHideFlags: 0
