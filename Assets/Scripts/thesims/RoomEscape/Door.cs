@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using Ai.Goap;
 
 namespace RoomEscape {
-    public class Door : MonoBehaviour, IStateful {
+    public class Door : Interactable, IStateful {
         public GameObject leadsToRoom;
         [SerializeField] private bool isOpen;
         [SerializeField] private bool isLocked;
@@ -18,7 +18,8 @@ namespace RoomEscape {
         private int openAnim = Animator.StringToHash("Open");
         private int breakAnim = Animator.StringToHash("Break");
 
-        void Awake() {
+        protected override void Awake() {
+            base.Awake();
             lockChecked = false;
             animator = GetComponent<Animator>();
             navObstacle = GetComponent<NavMeshObstacle>();

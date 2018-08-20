@@ -3,14 +3,14 @@ using System.Collections;
 
 
 namespace RoomEscape {
-    public class Interactable : MonoBehaviour {
+    public abstract class Interactable : MonoBehaviour {
 
         [SerializeField] private Color highlightColor;
         [SerializeField] private MeshRenderer meshRenderer;
 
         private Color[] originalColors;
 
-        private void Awake() {
+        protected virtual void Awake() {
             if (meshRenderer == null) {
                 meshRenderer = GetComponent<MeshRenderer>();
             }
@@ -36,18 +36,14 @@ namespace RoomEscape {
 
         private void OnMouseExit() {
             if (meshRenderer != null) {
-                /*
-                Material[] materials = meshRenderer.materials;
-                for (int i=0; i < materials.Length; i++) {
-                    materials[i].color = originalColors[i];
-                }
-                meshRenderer.materials = materials;
-                */
                 for(int i = 0; i < originalColors.Length; i++) {
                     meshRenderer.materials[i].color = originalColors[i];
                 }
             }
         }
 
+        public virtual void Use(Item heldItem) {
+            return;
+        }
     }
 }
