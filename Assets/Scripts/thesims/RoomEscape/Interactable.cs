@@ -52,6 +52,10 @@ namespace RoomEscape {
             interactionPanel.SetHidden(true);
         }
 
+        public virtual bool CanUse() {
+            return true;
+        }
+
         public virtual string Use() {
             return "";
         }

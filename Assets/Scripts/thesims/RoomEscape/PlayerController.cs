@@ -46,7 +46,9 @@ namespace RoomEscape {
             }
 
             if (currentTarget != null && GotToTarget()) {
-                speachBubble.Say(currentTarget.Use());
+                if (currentTarget.CanUse()) {
+                    speachBubble.Say(currentTarget.Use());
+                }
                 currentTarget = null;
             }
         }
@@ -61,7 +63,7 @@ namespace RoomEscape {
         }
 
         private void AnnounceAction() {
-            if (currentTarget.GetMainAction() != "") {
+            if (currentTarget.CanUse()) {
                 speachBubble.Say(currentTarget.GetMainAction()
                                  + " "
                                  + currentTarget.GetDescription());

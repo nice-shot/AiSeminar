@@ -85,7 +85,7 @@ namespace RoomEscape {
                 return "Open";
             }
 
-            return "Double Check";
+            return null;
         }
 
         public override string GetDescription() {
@@ -108,6 +108,13 @@ namespace RoomEscape {
 
             Open();
             return "Opened Door!";
+        }
+
+        public override bool CanUse() {
+            if (!lockChecked) {
+                return true;
+            }
+            return !isLocked;
         }
     }
 }
