@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace RoomEscape {
+    /// <summary>
+    /// Control player using mouse. Point and click approach
+    /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public class PlayerController : MonoBehaviour {
 
@@ -20,22 +23,25 @@ namespace RoomEscape {
         void Awake() {
             interactableLayer = LayerMask.NameToLayer("Interactable");
             navAgent = GetComponent<NavMeshAgent>();
+
+            // Set player as instance
             if (instance == null) {
                 instance = this;
             } else {
-                // There can be only one!
                 Destroy(this.gameObject);
             }
         }
 
         void Update() {
             if (Input.GetMouseButtonDown(0)) {
+                // Move to clicked location
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, RAYCAST_DISTANCE)) { 
                     navAgent.SetDestination(hit.point);
                     navAgent.isStopped = false;
 
+                    // Check interactability
                     if (hit.transform.gameObject.layer == interactableLayer) {
                         currentTarget = hit.transform.GetComponent<Interactable>();
                         AnnounceAction();
@@ -45,6 +51,7 @@ namespace RoomEscape {
                 }
             }
 
+            // Perform the action
             if (currentTarget != null && GotToTarget()) {
                 if (currentTarget.CanUse()) {
                     speachBubble.Say(currentTarget.Use());
