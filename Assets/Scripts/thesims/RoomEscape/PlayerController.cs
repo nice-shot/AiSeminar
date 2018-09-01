@@ -46,6 +46,8 @@ namespace RoomEscape {
                     // Check interactability
                     if (hit.transform.gameObject.layer == interactableLayer) {
                         currentTarget = hit.transform.GetComponent<Interactable>();
+                        // TODO: use nav target to allow closing doors from
+                        // both sides
                         AnnounceAction();
                     } else {
                         currentTarget = null;
@@ -55,7 +57,7 @@ namespace RoomEscape {
 
             // Perform the action
             if (currentTarget != null && GotToTarget()) {
-                if (currentTarget.CanUse()) {
+                if (currentTarget.CanUse(heldItem)) {
                     speachBubble.Say(currentTarget.Use(heldItem));
                 }
                 currentTarget = null;
@@ -73,8 +75,8 @@ namespace RoomEscape {
         }
 
         private void AnnounceAction() {
-            if (currentTarget.CanUse()) {
-                speachBubble.Say(currentTarget.GetMainAction()
+            if (currentTarget.CanUse(heldItem)) {
+                speachBubble.Say(currentTarget.GetMainAction(heldItem)
                                  + " "
                                  + currentTarget.GetDescription());
                 

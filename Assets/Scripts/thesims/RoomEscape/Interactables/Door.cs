@@ -77,12 +77,18 @@ namespace RoomEscape {
             return false;
         }
 
-        public override string GetMainAction() {
+        public override string GetMainAction(Container agentContainer) {
             if (!lockChecked || !isLocked) {
                 if (isOpen) {
                     return "Close";
                 }
                 return "Open";
+            }
+
+            if (lockChecked 
+                && isLocked 
+                && agentContainer.GetItemType() == ItemType.Key) {
+                return "Unlock";
             }
 
             return null;
@@ -97,8 +103,17 @@ namespace RoomEscape {
         }
 
         public override string Use(Container agentContainer) {
-            if (IsLocked()) {
-                return "Locked!";
+            if (!lockChecked && IsLocked()) {
+                return "Door's Locked!";
+            }
+
+            if (lockChecked 
+                && isLocked
+                && agentContainer.GetItemType() == ItemType.Key) {
+                Unlock();
+                Item key = agentContainer.DropItem();
+                Destroy(key.gameObject);
+                return "Unlocked Door!";
             }
 
             if (isOpen) {
@@ -110,8 +125,12 @@ namespace RoomEscape {
             return "Opened Door!";
         }
 
-        public override bool CanUse() {
+        public override bool CanUse(Container agentContainer) {
             if (!lockChecked) {
+                return true;
+            }
+
+            if (isLocked && agentContainer.GetItemType() == ItemType.Key) {
                 return true;
             }
             return !isLocked;

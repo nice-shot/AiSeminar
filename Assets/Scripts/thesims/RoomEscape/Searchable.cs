@@ -46,14 +46,14 @@ namespace RoomEscape {
             return name;
         }
 
-        public override string GetMainAction() {
+        public override string GetMainAction(Container agentContainer) {
             if (searched) {
                 return null;
             }
             return "Search";
         }
 
-        public override bool CanUse() {
+        public override bool CanUse(Container agentContainer) {
             return !searched;
         }
 

@@ -40,7 +40,7 @@ namespace RoomEscape {
                 }
             }
             interactionPanel.SetText(GetDescription(),
-                                     GetMainAction(),
+                                     GetMainAction(playerContainer),
                                      GetSecondaryAction());
             interactionPanel.SetHidden(false);
         }
@@ -58,7 +58,7 @@ namespace RoomEscape {
             return "";
         }
         
-        public virtual bool CanUse() {
+        public virtual bool CanUse(Container agentContainer) {
             return true;
         }
 
@@ -68,7 +68,7 @@ namespace RoomEscape {
             return "Interactable";
         }
 
-        public virtual string GetMainAction() {
+        public virtual string GetMainAction(Container agentContainer) {
             return null;
         }
 
