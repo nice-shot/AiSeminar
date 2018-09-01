@@ -52,8 +52,8 @@ namespace RoomEscape {
             interactionPanel.SetHidden(true);
         }
 
-        public virtual void Use(Item heldItem) {
-            return;
+        public virtual string Use() {
+            return "";
         }
 
         public virtual string GetDescription() {

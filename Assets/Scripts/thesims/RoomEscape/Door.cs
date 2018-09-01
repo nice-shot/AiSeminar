@@ -78,7 +78,14 @@ namespace RoomEscape {
         }
 
         public override string GetMainAction() {
-            return "Open";
+            if (!lockChecked || !isLocked) {
+                if (isOpen) {
+                    return "Close";
+                }
+                return "Open";
+            }
+
+            return null;
         }
 
         public override string GetDescription() {
@@ -87,6 +94,20 @@ namespace RoomEscape {
                 description = "Door (Locked)";
             }
             return description;
+        }
+
+        public override string Use() {
+            if (IsLocked()) {
+                return "Locked!";
+            }
+
+            if (isOpen) {
+                Close();
+                return "Closed Door!";
+            }
+
+            Open();
+            return "Opened Door!";
         }
     }
 }

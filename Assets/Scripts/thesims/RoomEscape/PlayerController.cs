@@ -44,9 +44,23 @@ namespace RoomEscape {
                     }
                 }
             }
+
+            if (currentTarget != null && GotToTarget()) {
+                speachBubble.Say(currentTarget.Use());
+                currentTarget = null;
+            }
         }
 
-        void AnnounceAction() {
+        private bool GotToTarget() {
+            if (!navAgent.pathPending 
+                && navAgent.pathStatus == NavMeshPathStatus.PathComplete
+                && navAgent.remainingDistance <= navAgent.stoppingDistance) {
+                return true;
+            }
+            return false;
+        }
+
+        private void AnnounceAction() {
             speachBubble.Say(currentTarget.GetMainAction()
                              + " "
                              + currentTarget.GetDescription());
