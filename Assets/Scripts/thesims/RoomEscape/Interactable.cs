@@ -5,16 +5,21 @@ using System.Collections;
 namespace RoomEscape {
     public abstract class Interactable : MonoBehaviour {
 
-        [SerializeField] private Color highlightColor;
-        [SerializeField] private MeshRenderer meshRenderer;
+        public Color highlightColor;
+        public MeshRenderer meshRenderer;
 
         private Color[] originalColors;
+        private InteractionPanelController interactionPanel;
 
         protected virtual void Awake() {
             if (meshRenderer == null) {
                 meshRenderer = GetComponent<MeshRenderer>();
             }
             StoreOriginalColor();
+        }
+
+        private void Start() {
+            interactionPanel = InteractionPanelController.instance;
         }
 
         private void StoreOriginalColor() {
@@ -32,6 +37,10 @@ namespace RoomEscape {
                     material.color = highlightColor;
                 }
             }
+            interactionPanel.SetText(GetDescription(),
+                                     GetMainAction(),
+                                     GetSecondaryAction());
+            interactionPanel.SetHidden(false);
         }
 
         private void OnMouseExit() {
@@ -40,10 +49,23 @@ namespace RoomEscape {
                     meshRenderer.materials[i].color = originalColors[i];
                 }
             }
+            interactionPanel.SetHidden(true);
         }
 
         public virtual void Use(Item heldItem) {
             return;
+        }
+
+        protected virtual string GetDescription() {
+            return "Interactable";
+        }
+
+        protected virtual string GetMainAction() {
+            return null;
+        }
+
+        protected virtual string GetSecondaryAction() {
+            return null;
         }
     }
 }

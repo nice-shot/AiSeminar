@@ -76,5 +76,17 @@ namespace RoomEscape {
             }
             return false;
         }
+
+        protected override string GetMainAction() {
+            return "Open";
+        }
+
+        protected override string GetDescription() {
+            string description = "Door";
+            if (lockChecked && isLocked) {
+                description = "Door (Locked)";
+            }
+            return description;
+        }
     }
 }

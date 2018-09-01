@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114594284519080352}
   - component: {fileID: 114524463694884080}
   - component: {fileID: 114128038800521826}
+  - component: {fileID: 114392991059237186}
   m_Layer: 5
   m_Name: InteractionPanel
   m_TagString: Untagged
@@ -213,6 +214,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &114392991059237186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1180976727155474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 914785fe26c91400f8f26648ee1e874f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descriptionText: {fileID: 114518269999792328}
+  mainActionText: {fileID: 114531235729209520}
+  secondaryActionText: {fileID: 114977673762492888}
+  mainActionContainer: {fileID: 1413278010072192}
+  secondaryActionContainer: {fileID: 1983428672635502}
 --- !u!114 &114451120234655752
 MonoBehaviour:
   m_ObjectHideFlags: 1
