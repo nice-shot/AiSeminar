@@ -57,11 +57,15 @@ namespace RoomEscape {
             return !searched;
         }
 
-        public override string Use() {
+        public override string Use(Container agentContainer) {
             ItemType item = Search();
             if (item == ItemType.None) {
                 return "It's empty";
             }
+
+            // Make agent pick up item:
+            agentContainer.PickUpItem(RetrieveItem());
+
             return "Found " + item.ToString() + "!";
         }
     }

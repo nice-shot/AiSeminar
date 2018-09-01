@@ -10,6 +10,7 @@ namespace RoomEscape {
 
         private Color[] originalColors;
         private InteractionPanelController interactionPanel;
+        private Container playerContainer;
 
         protected virtual void Awake() {
             if (meshRenderer == null) {
@@ -20,6 +21,7 @@ namespace RoomEscape {
 
         private void Start() {
             interactionPanel = InteractionPanelController.instance;
+            playerContainer = PlayerController.instance.GetComponent<Container>();
         }
 
         private void StoreOriginalColor() {
@@ -51,14 +53,16 @@ namespace RoomEscape {
             }
             interactionPanel.SetHidden(true);
         }
-
+        
+        public virtual string Use(Container agentContainer) {
+            return "";
+        }
+        
         public virtual bool CanUse() {
             return true;
         }
 
-        public virtual string Use() {
-            return "";
-        }
+        // Used for speach bubbles and interaction panel
 
         public virtual string GetDescription() {
             return "Interactable";

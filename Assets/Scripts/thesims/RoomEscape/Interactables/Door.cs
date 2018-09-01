@@ -96,7 +96,7 @@ namespace RoomEscape {
             return description;
         }
 
-        public override string Use() {
+        public override string Use(Container agentContainer) {
             if (IsLocked()) {
                 return "Locked!";
             }

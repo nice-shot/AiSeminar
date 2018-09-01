@@ -10,11 +10,12 @@ namespace RoomEscape {
     [RequireComponent(typeof(NavMeshAgent))]
     public class PlayerController : MonoBehaviour {
 
-        public Interactable currentTarget;
         public SpeachBubbleController speachBubble;
+        public Container heldItem;
 
         public static PlayerController instance;
 
+        private Interactable currentTarget;
         private NavMeshAgent navAgent;
         private int interactableLayer;
 
@@ -23,6 +24,7 @@ namespace RoomEscape {
         void Awake() {
             interactableLayer = LayerMask.NameToLayer("Interactable");
             navAgent = GetComponent<NavMeshAgent>();
+            heldItem = GetComponent<Container>();
 
             // Set player as instance
             if (instance == null) {
@@ -54,7 +56,7 @@ namespace RoomEscape {
             // Perform the action
             if (currentTarget != null && GotToTarget()) {
                 if (currentTarget.CanUse()) {
-                    speachBubble.Say(currentTarget.Use());
+                    speachBubble.Say(currentTarget.Use(heldItem));
                 }
                 currentTarget = null;
             }
