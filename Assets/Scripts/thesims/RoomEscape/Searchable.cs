@@ -47,7 +47,10 @@ namespace RoomEscape {
         }
 
         public override string GetMainAction() {
-            return "search";
+            if (searched) {
+                return null;
+            }
+            return "Search";
         }
 
         public override bool CanUse() {
