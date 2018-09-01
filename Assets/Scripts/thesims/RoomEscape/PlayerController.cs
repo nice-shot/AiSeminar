@@ -8,6 +8,7 @@ namespace RoomEscape {
     public class PlayerController : MonoBehaviour {
 
         public Interactable currentTarget;
+        public SpeachBubbleController speachBubble;
 
         public static PlayerController instance;
 
@@ -37,11 +38,18 @@ namespace RoomEscape {
 
                     if (hit.transform.gameObject.layer == interactableLayer) {
                         currentTarget = hit.transform.GetComponent<Interactable>();
+                        AnnounceAction();
                     } else {
                         currentTarget = null;
                     }
                 }
             }
+        }
+
+        void AnnounceAction() {
+            speachBubble.Say(currentTarget.GetMainAction()
+                             + " "
+                             + currentTarget.GetDescription());
         }
     }
 }

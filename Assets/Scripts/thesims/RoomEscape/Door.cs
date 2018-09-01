@@ -77,11 +77,11 @@ namespace RoomEscape {
             return false;
         }
 
-        protected override string GetMainAction() {
+        public override string GetMainAction() {
             return "Open";
         }
 
-        protected override string GetDescription() {
+        public override string GetDescription() {
             string description = "Door";
             if (lockChecked && isLocked) {
                 description = "Door (Locked)";

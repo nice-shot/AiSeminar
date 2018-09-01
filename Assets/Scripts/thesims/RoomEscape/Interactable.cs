@@ -56,15 +56,15 @@ namespace RoomEscape {
             return;
         }
 
-        protected virtual string GetDescription() {
+        public virtual string GetDescription() {
             return "Interactable";
         }
 
-        protected virtual string GetMainAction() {
+        public virtual string GetMainAction() {
             return null;
         }
 
-        protected virtual string GetSecondaryAction() {
+        public virtual string GetSecondaryAction() {
             return null;
         }
     }
