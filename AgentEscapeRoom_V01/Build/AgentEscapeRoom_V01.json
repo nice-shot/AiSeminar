@@ -1,0 +1,12 @@
+{
+"companyName": "NiceShot",
+"productName": "SurviveAI",
+"dataUrl": "AgentEscapeRoom_V01.data.unityweb",
+"wasmCodeUrl": "AgentEscapeRoom_V01.wasm.code.unityweb",
+"wasmFrameworkUrl": "AgentEscapeRoom_V01.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
