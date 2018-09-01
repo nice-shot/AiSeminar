@@ -61,9 +61,12 @@ namespace RoomEscape {
         }
 
         private void AnnounceAction() {
-            speachBubble.Say(currentTarget.GetMainAction()
-                             + " "
-                             + currentTarget.GetDescription());
+            if (currentTarget.GetMainAction() != "") {
+                speachBubble.Say(currentTarget.GetMainAction()
+                                 + " "
+                                 + currentTarget.GetDescription());
+                
+            }
         }
     }
 }

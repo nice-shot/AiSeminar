@@ -85,7 +85,7 @@ namespace RoomEscape {
                 return "Open";
             }
 
-            return null;
+            return "Double Check";
         }
 
         public override string GetDescription() {

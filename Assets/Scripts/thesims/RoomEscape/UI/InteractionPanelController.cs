@@ -44,6 +44,7 @@ public class InteractionPanelController : MonoBehaviour {
     }
 
     public void SetHidden(bool hidden) {
+        transform.position = Input.mousePosition;
         gameObject.SetActive(!hidden);
     }
 }
