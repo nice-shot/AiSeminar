@@ -1,16 +1,5 @@
-Submitted by:
-<student name> <id>
-<student name> <id>
+# Survive AI
+A zombie-survival game used to demonstrate and test the possibilities of the
+GOAP ai algorithem to create complex AI agents.
 
-Game description:
-<description>
-
-Agents:
-<list of agents, their goals and other relevant information>
-
-Notes:
-<interesting things you implemented or observed during the simulation>
-
-Code credit:
-We used <name>'s module for <description>.
-Attribution in source files.
+A seminar project by Nadav Sheffer for Bezalel Academy of the Arts. 
