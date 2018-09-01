@@ -61,8 +61,9 @@ namespace RoomEscape {
         }
 
         private bool GotToTarget() {
-            if (!navAgent.pathPending 
+            if (!navAgent.pathPending
                 && navAgent.pathStatus == NavMeshPathStatus.PathComplete
+                && Mathf.Approximately(navAgent.velocity.sqrMagnitude, 0f)
                 && navAgent.remainingDistance <= navAgent.stoppingDistance) {
                 return true;
             }
