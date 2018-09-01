@@ -5,14 +5,15 @@ using Ai.Goap;
 
 namespace RoomEscape {
     [RequireComponent(typeof(Container))]
-    public class Searchable : MonoBehaviour, IStateful {
+    public class Searchable : Interactable, IStateful {
         // All searchables are not searched by default
         private bool searched = false;
 
         private Container container;
         private readonly State state = new State();
 
-        void Awake() {
+        protected override void Awake() {
+            base.Awake();
             container = GetComponent<Container>();
         }
 
@@ -36,6 +37,29 @@ namespace RoomEscape {
                 item.visible = true;
             }
             return container.DropItem();
+        }
+
+        public override string GetDescription() {
+            if (searched) {
+                return name + " (Searched)";
+            }
+            return name;
+        }
+
+        public override string GetMainAction() {
+            return "search";
+        }
+
+        public override bool CanUse() {
+            return !searched;
+        }
+
+        public override string Use() {
+            ItemType item = Search();
+            if (item == ItemType.None) {
+                return "It's empty";
+            }
+            return "Found " + item.ToString() + "!";
         }
     }
 }
