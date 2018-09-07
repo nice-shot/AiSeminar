@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RoomEscape3D_02.unity
-    guid: a2a53604814b5a34bbd4d03c42144ff8
+    path: Assets/Scenes/ZombieRun.unity
+    guid: e857cc9e2bf019d48a35af78893d4cb4
   m_configObjects: {}
