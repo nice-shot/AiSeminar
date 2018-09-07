@@ -42,7 +42,6 @@ namespace RoomEscape {
             interactionPanel.SetText(GetDescription(),
                                      GetMainAction(playerContainer),
                                      GetSecondaryAction());
-            interactionPanel.SetHidden(false);
         }
 
         private void OnMouseExit() {

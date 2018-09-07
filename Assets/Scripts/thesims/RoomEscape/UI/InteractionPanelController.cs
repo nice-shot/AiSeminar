@@ -56,8 +56,14 @@ public class InteractionPanelController : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Show the interaction panel with the given details
+    /// </summary>
+    /// <param name="description">Object description</param>
+    /// <param name="main">Left click action</param>
+    /// <param name="secondary">Right click action</param>
     public void SetText(string description, string main, string secondary) {
-        gameObject.SetActive(true);
+        SetHidden(false);
         descriptionText.text = description;
 
         if (main != null) {
