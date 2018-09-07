@@ -57,6 +57,7 @@ public class InteractionPanelController : MonoBehaviour {
     }
 
     public void SetText(string description, string main, string secondary) {
+        gameObject.SetActive(true);
         descriptionText.text = description;
 
         if (main != null) {
@@ -72,6 +73,10 @@ public class InteractionPanelController : MonoBehaviour {
         } else {
             secondaryActionContainer.SetActive(false);
         }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(descriptionText.rectTransform);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(mainActionText.rectTransform);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(secondaryActionText.rectTransform);
     }
 
     public void SetHidden(bool hidden) {

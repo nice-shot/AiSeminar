@@ -34,8 +34,9 @@ public class SpeachBubbleController : MonoBehaviour {
 
     public void Say(string text) {
         startTime = Time.time;
-        mainText.text = text;
-        UpdatePosition();
         gameObject.SetActive(true);
+        mainText.text = text;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(mainText.rectTransform);
+        UpdatePosition();
     }
 }

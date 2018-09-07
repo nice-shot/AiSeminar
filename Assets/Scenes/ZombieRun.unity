@@ -877,6 +877,36 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224601692401054264, guid: b9bdb1dcdab4a4972be48c40039db5e6,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 199
+      objectReference: {fileID: 0}
+    - target: {fileID: 222688446234928810, guid: b9bdb1dcdab4a4972be48c40039db5e6,
+        type: 2}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114594284519080352, guid: b9bdb1dcdab4a4972be48c40039db5e6,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114524463694884080, guid: b9bdb1dcdab4a4972be48c40039db5e6,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114128038800521826, guid: b9bdb1dcdab4a4972be48c40039db5e6,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114392991059237186, guid: b9bdb1dcdab4a4972be48c40039db5e6,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9bdb1dcdab4a4972be48c40039db5e6, type: 2}
   m_IsPrefabAsset: 0
@@ -5239,7 +5269,7 @@ Prefab:
     - target: {fileID: 224544554731544466, guid: 82ad37ced928c4eefb1a4ba6193b9010,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 261
+      value: 203
       objectReference: {fileID: 0}
     - target: {fileID: 224544554731544466, guid: 82ad37ced928c4eefb1a4ba6193b9010,
         type: 2}
@@ -5284,7 +5314,42 @@ Prefab:
     - target: {fileID: 224708800476179780, guid: 82ad37ced928c4eefb1a4ba6193b9010,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 130.5
+      value: 101.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114644611671062288, guid: 82ad37ced928c4eefb1a4ba6193b9010,
+        type: 2}
+      propertyPath: m_Text
+      value: Player action
+      objectReference: {fileID: 0}
+    - target: {fileID: 224708800476179780, guid: 82ad37ced928c4eefb1a4ba6193b9010,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774342141307676, guid: 82ad37ced928c4eefb1a4ba6193b9010,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114644611671062288, guid: 82ad37ced928c4eefb1a4ba6193b9010,
+        type: 2}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114774342141307676, guid: 82ad37ced928c4eefb1a4ba6193b9010,
+        type: 2}
+      propertyPath: m_VerticalFit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114871964957285188, guid: 82ad37ced928c4eefb1a4ba6193b9010,
+        type: 2}
+      propertyPath: m_ChildForceExpandWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114871964957285188, guid: 82ad37ced928c4eefb1a4ba6193b9010,
+        type: 2}
+      propertyPath: m_ChildForceExpandHeight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82ad37ced928c4eefb1a4ba6193b9010, type: 2}
